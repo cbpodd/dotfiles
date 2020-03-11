@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Common Flags
 alias la="ls -A"
 alias ll="ls -lh"
