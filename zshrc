@@ -1,0 +1,13 @@
+# Includes all necessary places for path
+export PATH="$HOME/bin/apache-maven-3.6.3/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Expose custom commands
+source ~/.zsh/custom_commands.sh
+
+# Expose custom aliases
+source ~/.zsh/alias.sh
+
+# Java Default set to 1.8
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+bindkey -v
