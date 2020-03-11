@@ -3,6 +3,11 @@ alias la="ls -A"
 alias ll="ls -lh"
 alias lla="ll -A"
 
+alias t="tree"
+alias ta="t -a"
+alias tl="t -lh"
+alias tla="tl -a"
+
 # Git
 alias g="git"
 alias ga="g add ."
