@@ -13,6 +13,8 @@ alias gph="g push"
 alias gb="g branch"
 alias gch="g checkout"
 alias gf="g fetch"
+alias gr="g remote"
+alias grao="gr add origin"
 
 # Vim
 alias v="vim"
