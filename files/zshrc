@@ -12,3 +12,6 @@ source ~/.zsh/alias.sh
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 bindkey -v
+export PATH="/usr/local/sbin:$PATH"
+
+export PATH="/usr/local/sbin:/Users/cbpodd/bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
