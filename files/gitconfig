@@ -4,7 +4,7 @@
 [color]
 	ui = auto
 [core]
-	editor = code
+	editor = vim
 	autocrlf = input
 [push]
 	default = simple
