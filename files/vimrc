@@ -36,14 +36,14 @@ filetype plugin indent on    " required
 " UI Config ----------------------------------------------------
 set encoding=utf-8
 set background=dark
-colorscheme desert
+" colorscheme desert
 set number              " show line numbers
 set showcmd             " show command in bottom bar
 filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
-set columns=9999        " Make window full screen
-set lines=9999
+" set columns=9999        " Make window full screen
+" set lines=9999
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 set guioptions+=e

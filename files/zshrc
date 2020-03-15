@@ -1,5 +1,5 @@
 # Includes all necessary places for path
-export PATH="$HOME/bin/apache-maven-3.6.3/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="$HOME/bin/apache-maven-3.6.3/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 fpath+=~/.zsh
 
 # Expose custom commands
@@ -12,6 +12,24 @@ source ~/.zsh/alias.sh
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 bindkey -v
-export PATH="/usr/local/sbin:$PATH"
+# export PATH="/usr/local/sbin:$PATH"
 
 export PATH="/usr/local/sbin:/Users/cbpodd/bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
+
+# Prompt Cusomization
+# Left Prompt
+export PS1='%B%F{blue}%/ %f%# '
+
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info  }
+precmd_functions+=( precmd_vcs_info  )
+setopt prompt_subst
+export RPROMPT="%B%(?.%F{green}√.%F{red}X %?) $vcs_info_msg_0_"
+zstyle ':vcs_info:git:*' formats '%F{orange}(%b) %r%f'
+zstyle ':vcs_info:*' enable git
+
+# export RPROMPT='%B%(?.%F{green}√.%F{red}X %?) %f%t'
+
+source /Users/cbpodd/Library/Preferences/org.dystroy.broot/launcher/bash/br
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
