@@ -113,6 +113,13 @@ nmap <S-Enter> O<Esc>
 " Map Enter to add new line below inplace
 nmap <Enter> o<Esc>
 
+" Tabs
+nnoremap <C-t> :tabnew<cr>
+nnoremap <leader>tj :tabr<cr>
+nnoremap <leader>tk :tabl<cr>
+nnoremap <leader>th :tabp<cr>
+nnoremap <leader>tl :tabn<cr>
+
 " File Specific Settings ---------------------------------------
 augroup configgroup
     autocmd!

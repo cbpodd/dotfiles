@@ -7,10 +7,11 @@ source ~/.zsh/alias.sh
 # Java Default set to 1.8
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
-bindkey -v
 source /Users/cbpodd/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 export PATH="/usr/local/sbin:/Users/cbpodd/bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#B3B3B3'
+
 source ~/.zsh/antigen.zsh
-antigen init .antigenrc
+antigen init ~/.antigenrc

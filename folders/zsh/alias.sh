@@ -31,6 +31,10 @@ alias gv="gvim"
 # Common mistyping
 alias sl=ls
 
+# Common Vim Commands
+alias :e=vim
+alias :q=exit
+
 # Overwrites of existing commands for better defaults
 alias mv="mv -i"        # -i prompts before overwrite
 alias mkdir="mkdir -p"  # -p makes parents dirs as needed
