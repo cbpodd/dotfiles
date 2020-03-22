@@ -52,6 +52,10 @@ set showtabline=2
 syntax enable           " enable syntax processing
 set guifont=Fixedsys:h10
 
+" Mouse -----------------------------------------------
+set mouse=a
+set term=xterm-256color
+
 " Tabzz -------------------------------------------------
 " Whitespace.
 " Spaces instead of tabs.

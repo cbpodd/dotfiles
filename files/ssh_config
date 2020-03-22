@@ -1,5 +1,10 @@
 Host vbox
+    User cbpodd
     HostName 127.0.0.1
     StrictHostKeyChecking no
-    User cbpodd
     Port 2222
+
+Host azure
+    User cbpodd
+    HostName 104.42.75.206
+    RemoteForward 8080 localhost:80
