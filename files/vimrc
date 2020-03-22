@@ -37,13 +37,12 @@ filetype plugin indent on    " required
 set encoding=utf-8
 set background=dark
 " colorscheme desert
-set number              " show line numbers
-set showcmd             " show command in bottom bar
-filetype indent on      " load filetype-specific indent files
-set wildmenu            " visual autocomplete for command menu
-set showmatch           " highlight matching [{()}]
-" set columns=9999        " Make window full screen
-" set lines=9999
+set number relativenumber " show line numbers
+set ruler                 " Show ruler on bottom
+set showcmd               " show command in bottom bar
+filetype indent on        " load filetype-specific indent files
+set wildmenu              " visual autocomplete for command menu
+set showmatch             " highlight matching [{()}]
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 set guioptions+=e
@@ -96,9 +95,6 @@ set autochdir
 
 " Leader Mappings -------------------------------------
 let mapleader=","       " leader is comma
-
-" jk is escape
-inoremap jk <esc>
 
 " Terminal Remaps
 " tnoremap : <C-w>:

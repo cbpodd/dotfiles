@@ -1,17 +1,57 @@
-fpath+=~/.zsh
-
 # Expose custom commands
-source ~/.zsh/custom_commands.sh
-source ~/.zsh/alias.sh
+source ~/.bin/custom_commands.sh
 
 # Java Default set to 1.8
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 source /Users/cbpodd/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
-export PATH="/usr/local/sbin:/Users/cbpodd/bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
+# Path
+export PATH="/Users/cbpodd/.bin:/usr/local/sbin:/Users/cbpodd/.bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
+fpath+=~/.bin
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#B3B3B3'
 
-source ~/.zsh/antigen.zsh
+source ~/.bin/antigen.zsh
 antigen init ~/.antigenrc
+
+# Aliases
+# Common Flags
+alias la="ls -A"
+alias ll="ls -lh"
+alias lla="ll -A"
+
+alias t="tree"
+alias ta="t -a"
+alias tl="t -lh"
+alias tla="tl -a"
+
+# Git
+alias g="git"
+alias ga="g add ."
+alias gc="g commit -m"
+alias gs="g status"
+alias gpl="g pull"
+alias gph="g push"
+alias gb="g branch"
+alias gch="g checkout"
+alias gf="g fetch"
+alias gr="g remote"
+alias grao="gr add origin"
+
+# Vim
+alias v="vim"
+alias gvim="gvim --remote-tab-silent"
+alias gv="gvim"
+
+# Common mistyping
+alias sl=ls
+
+# Common Vim Commands
+alias :e=vim
+alias :q=exit
+
+# Overwrites of existing commands for better defaults
+alias mv="mv -i"        # -i prompts before overwrite
+alias mkdir="mkdir -p"  # -p makes parents dirs as needed
+alias cp="cp -r"        # -r copies directories recursively
