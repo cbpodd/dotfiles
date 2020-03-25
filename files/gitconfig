@@ -1,6 +1,7 @@
 [user]
 	name = Cameron Podd
 	email = podd@usc.edu
+	signingkey = E3B091460453C0B714A859321523AD042B34FA42
 [color]
 	ui = auto
 [core]
