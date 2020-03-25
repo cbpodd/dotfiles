@@ -29,7 +29,7 @@ alias tla="tl -a"
 # Git
 alias g="git"
 alias ga="g add ."
-alias gc="g commit -m"
+alias gc="g commit -S -m"
 alias gs="g status"
 alias gpl="g pull"
 alias gph="g push"
