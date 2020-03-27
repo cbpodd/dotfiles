@@ -9,3 +9,7 @@
 	autocrlf = input
 [push]
 	default = simple
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true

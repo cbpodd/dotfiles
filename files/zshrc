@@ -20,11 +20,6 @@ alias la="ls -A"
 alias ll="ls -lh"
 alias lla="ll -A"
 
-alias t="tree"
-alias ta="t -a"
-alias tl="t -lh"
-alias tla="tl -a"
-
 # Git
 alias g="git"
 alias ga="g add ."
@@ -40,14 +35,21 @@ alias grao="gr add origin"
 
 # Vim
 alias v="vim"
-alias gvim="gvim --remote-tab-silent"
-alias gv="gvim"
 
 # VirtualBox Command Line
 alias vbox="VBoxManage"
 alias vbsa='vbox startvm "Ubuntu Server" --type headless'
 alias vbso='vbox controlvm "Ubuntu Server" poweroff --type headless'
 alias vboxc='vbsa && ssh vbox && vbso'
+
+# Shpotify - Spotify Command Line
+alias s="spotify"
+alias sn="s next"
+alias spv="s prev"
+alias sp="s pause"
+alias spy="s play"
+alias sq="s quit"
+alias ss="s status"
 
 # Common mistyping
 alias sl=ls
@@ -60,3 +62,6 @@ alias :q=exit
 alias mv="mv -i"        # -i prompts before overwrite
 alias mkdir="mkdir -p"  # -p makes parents dirs as needed
 alias cp="cp -r"        # -r copies directories recursively
+
+# Others
+alias rq='sed -E "s/\"//g"'

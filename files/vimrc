@@ -85,7 +85,6 @@ set lazyredraw          " redraw only when we need to
 
 " Search ---------------------------------------------------
 set incsearch           " search as characters are entered
-set hlsearch            " highlight matches
 
 " Folding ----------------------------------------
 set foldenable          " enable folding
