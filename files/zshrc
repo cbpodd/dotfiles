@@ -7,14 +7,22 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 source /Users/cbpodd/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 # Path
-export PATH="/Users/cbpodd/.bin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/.bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
+export PATH="/Users/cbpodd/.bin/context/tex/texmf-osx-64/bin:/Users/cbpodd/.bin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/.bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
 fpath+=~/.bin
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#B3B3B3'
 source ~/.bin/antigen.zsh
 antigen init ~/.antigenrc
+export EDITOR=vim
 
 # Aliases
+# Overwrites of existing commands for better defaults
+alias mv="mv -i"             # -i prompts before overwrite
+alias mkdir="mkdir -p"       # -p makes parents dirs as needed
+alias cp="cp -r"             # -r copies directories recursively
+alias make="make -j$(nproc)" # -j$(nproc) uses nproc concurrent jobs   
+alias cat="cat -n"           # -n displays line numbers
+
 # Common Flags
 alias la="ls -A"
 alias ll="ls -lh"
@@ -32,6 +40,7 @@ alias gch="g checkout"
 alias gf="g fetch"
 alias gr="g remote"
 alias grao="gr add origin"
+alias ggraph="git log --oneline --graph --decorate --all"
 
 # Vim
 alias v="vim"
@@ -51,17 +60,27 @@ alias spy="s play"
 alias sq="s quit"
 alias ss="s status"
 
-# Common mistyping
-alias sl=ls
+# 3llo - Trello
+alias trello="3llo"
 
 # Common Vim Commands
 alias :e=vim
 alias :q=exit
 
-# Overwrites of existing commands for better defaults
-alias mv="mv -i"        # -i prompts before overwrite
-alias mkdir="mkdir -p"  # -p makes parents dirs as needed
-alias cp="cp -r"        # -r copies directories recursively
+# Make
+alias m="make"
+alias mc="m clean"
+
+# My own displayplacer commands
+alias nd="normalDisplays"
+alias md="mirrorDisplays"
+
+# Brew
+alias b="brew"
+alias bi="b install"
+alias bri="b reinstall"
+alias bu="brew update"
+alias bb="rm ~/Brewfile && brew bundle dump --file=~/Brewfile"
 
 # Others
 alias rq='sed -E "s/\"//g"'

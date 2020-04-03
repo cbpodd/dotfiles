@@ -3,3 +3,9 @@ bundle
 .netrwhist
 plugins
 apache*
+context
+node_modules
+configstore
+automatic_backups
+.history
+yarn.lock

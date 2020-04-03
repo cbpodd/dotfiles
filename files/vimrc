@@ -15,14 +15,17 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe' " Syntax Checking
 Plugin 'w0rp/ale' " Asynchronous YCM
 Plugin 'jiangmiao/auto-pairs' " Auto-closing brackets
-Plugin 'prettier/vim-prettier'
-"
+Plugin 'prettier/vim-prettier' " Prettier in VIM
+Plugin 'ron89/thesaurus_query.vim' " Thesaurus Functionality
+Plugin 'preservim/nerdcommenter' " Easy commenting
+Plugin 'tpope/vim-surround' " Change surrounding code
+Plugin 'airblade/vim-gitgutter' " Add gitgutter to vim
 " All of your Plugins must be added before the following line
 call vundle#end()
 
-filetype plugin indent on    " required
+" filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -36,7 +39,6 @@ filetype plugin indent on    " required
 " UI Config ----------------------------------------------------
 set encoding=utf-8
 set background=dark
-" colorscheme desert
 set number relativenumber " show line numbers
 set ruler                 " Show ruler on bottom
 set showcmd               " show command in bottom bar
@@ -73,9 +75,10 @@ set autoindent
 set cindent
 
 " Backup, Swap, Undo Directories -------------------------------
-set backupdir=/tmp//
-set directory=/tmp//
-set undodir=/tmp//
+set backupdir=$HOME/.vim/tmp/backups//
+set directory=$HOME/.vim/tmp/swapfiles//
+set undodir=$HOME/.vim/tmp/undofiles//
+set undofile
 
 " Backspace --------------------------------------------
 set backspace=indent,eol,start
@@ -89,28 +92,19 @@ set incsearch           " search as characters are entered
 " Folding ----------------------------------------
 set foldenable          " enable folding
 set foldlevelstart=3   " open most folds by default
-nnoremap <space> za
+" nnoremap <space> za
 set foldmethod=indent   " fold based on indent level
 set foldignore=
-
-" Movement --------------------------------------
-set autochdir
 
 " Leader Mappings -------------------------------------
 let mapleader=","       " leader is comma
 
-" Terminal Remaps
-" tnoremap : <C-w>:
-" tnoremap <leader>w <C-w>
-
 " Map leader w to window commands
 nnoremap <leader>w <C-w>
 
-" Map Shift-Enter to add new line inplace
-nmap <S-Enter> O<Esc>
-
-" Map Enter to add new line below inplace
-nmap <Enter> o<Esc>
+" Map [] space to add new line inplace
+nnoremap <silent> ]<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
+nnoremap <silent> [<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
 " Tabs
 nnoremap <C-t> :tabnew<cr>
@@ -129,6 +123,8 @@ augroup configgroup
     autocmd FileType java setlocal formatprg=par\ -w80\ -T4
     autocmd FileType python setlocal commentstring=#\ %s
     autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd FileType markdown setlocal spell spelllang=en_us
+    autocmd FileType text setlocal spell spelllang=en_us
 augroup END
 
 " Set filetype extensions
@@ -164,4 +160,26 @@ let g:ale_lint_on_insert_leave = 0
 
 " Prettier Config --------------------------------
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue, PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue, PrettierAsync
+
+" Thesaurus Config ------------------------------
+nnoremap zt :ThesaurusQueryReplaceCurrentWord<CR>
+vnoremap zt y:ThesaurusQueryReplace <C-r>"<CR>
+
+" NERD Commenter Config -------------------------
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
