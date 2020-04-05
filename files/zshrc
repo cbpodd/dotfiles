@@ -54,6 +54,19 @@ function singleDisplay() {
     displayplacer "id:$INTERNAL_SCREEN_ID $SINGLE_MODE $NO_ROTATE origin:(0,0)"
 }
 
+function brewInstall() {
+    brew update
+    brew upgrade
+    brew install $1
+
+    if [-e ~/.config/brew/Brewfile ]
+    then
+        rm ~/.config/brew/Brewfile
+    fi
+
+    brew bundle dump --file=~/.config/brew/Brewfile
+}
+
 # Aliases
 
 # Overwrites of existing commands for better defaults
@@ -117,11 +130,7 @@ alias md="mirrorDisplays"
 alias sd="singleDisplay"
 
 # Brew
-alias b="brew"
-alias bi="b install"
-alias bri="b reinstall"
-alias bu="brew update"
-alias bb="rm ~/Brewfile && brew bundle dump --file=~/Brewfile"
+alias bi="brewInstall"
 
 # Others
 alias rq='sed -E "s/\"//g"'
