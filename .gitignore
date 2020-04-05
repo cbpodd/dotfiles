@@ -9,3 +9,4 @@ configstore
 automatic_backups
 .history
 yarn.lock
+id*
