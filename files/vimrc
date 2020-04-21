@@ -1,13 +1,10 @@
-" Required Vundle Code --------------------------------------
+" Vundle --------------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -15,36 +12,22 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe' " Syntax Checking
 Plugin 'w0rp/ale' " Asynchronous YCM
 Plugin 'jiangmiao/auto-pairs' " Auto-closing brackets
-Plugin 'prettier/vim-prettier' " Prettier in VIM
 Plugin 'ron89/thesaurus_query.vim' " Thesaurus Functionality
-Plugin 'preservim/nerdcommenter' " Easy commenting
 Plugin 'tpope/vim-surround' " Change surrounding code
-Plugin 'airblade/vim-gitgutter' " Add gitgutter to vim
+Plugin 'mattn/emmet-vim' " HTML5 snippets
 " All of your Plugins must be added before the following line
-call vundle#end()
-
-" filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
+call vundle#end() 
 filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 " UI Config ----------------------------------------------------
 set encoding=utf-8
-set background=dark
+" set background=dark
 set number relativenumber " show line numbers
 set ruler                 " Show ruler on bottom
 set showcmd               " show command in bottom bar
 filetype indent on        " load filetype-specific indent files
 set wildmenu              " visual autocomplete for command menu
-set showmatch             " highlight matching [{()}]
+" set showmatch             " highlight matching [{()}]
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 set guioptions+=e
@@ -80,11 +63,11 @@ set directory=$HOME/.vim/tmp/swapfiles//
 set undodir=$HOME/.vim/tmp/undofiles//
 set undofile
 
-" Backspace --------------------------------------------
-set backspace=indent,eol,start
-
 " Optimizations ----------------------------------------
 set lazyredraw          " redraw only when we need to
+
+" Movement ---------------------------------------------------
+set autochdir           " Change directory automatically
 
 " Search ---------------------------------------------------
 set incsearch           " search as characters are entered
@@ -92,26 +75,20 @@ set incsearch           " search as characters are entered
 " Folding ----------------------------------------
 set foldenable          " enable folding
 set foldlevelstart=3   " open most folds by default
-" nnoremap <space> za
 set foldmethod=indent   " fold based on indent level
 set foldignore=
 
-" Leader Mappings -------------------------------------
-let mapleader=","       " leader is comma
+" Leader Remappings --------------------------------
+let mapleader = ","
 
-" Map leader w to window commands
-nnoremap <leader>w <C-w>
-
-" Map [] space to add new line inplace
+" Map [] space to add new line inplace -----------------------
 nnoremap <silent> ]<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
 nnoremap <silent> [<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
-" Tabs
-nnoremap <C-t> :tabnew<cr>
-nnoremap <leader>tj :tabr<cr>
-nnoremap <leader>tk :tabl<cr>
-nnoremap <leader>th :tabp<cr>
-nnoremap <leader>tl :tabn<cr>
+" Tabs -------------------------------------------------------
+nnoremap t :tabnew<space> 
+nnoremap J :tabr<cr>
+nnoremap K :tabl<cr>
 
 " File Specific Settings ---------------------------------------
 augroup configgroup
@@ -125,27 +102,14 @@ augroup configgroup
     autocmd BufEnter Makefile setlocal noexpandtab
     autocmd FileType markdown setlocal spell spelllang=en_us
     autocmd FileType text setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.vcxproj setlocal syntax=xml
+    autocmd BufNewFile,BufRead *.csproj setlocal syntax=xml
 augroup END
 
-" Set filetype extensions
-augroup msbuildextensions
-    au!
-    autocmd BufNewFile,BufRead *.vcxproj set syntax=xml
-    autocmd BufNewFile,BufRead *.csproj set syntax=xml
-augroup END
+"  Configure YouCompleteMe -----------------------
 
-" Custom Functions ---------------------------
-function! Formatonsave()
-  let l:formatdiff = 1
-  py3f ~/.vim/clang-format.py
-endfunction
-autocmd BufWritePre *.h,*.hpp,*.cpp call Formatonsave()
-
-" ---------------------------------- "
-"  " Configure YouCompleteMe
-"
 let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g :tab split \| YcmCompleter GoToDefinition<CR>
+nnoremap <leader>g :split \| YcmCompleter GoToDefinition<CR>
 let g:jedi#use_tabs_not_buffers = 1
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_register_as_syntastic_checker = 1 "default 1
@@ -155,31 +119,12 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_insert_leave = 1
 " let g:ale_python_pylint_executable = '/home/cbpodd/anaconda3/bin/pylint'
-
-" Prettier Config --------------------------------
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue, PrettierAsync
 
 " Thesaurus Config ------------------------------
 nnoremap zt :ThesaurusQueryReplaceCurrentWord<CR>
 vnoremap zt y:ThesaurusQueryReplace <C-r>"<CR>
 
-" NERD Commenter Config -------------------------
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
+" Emmet Vim -------------------------------------
+let g:user_emmet_leader_key='<leader>'

@@ -15,12 +15,60 @@
                     "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
+                     {
+                        "description": "Right OS is Shift+OS",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Right shift is Alt+Shift",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
                     {
                         "description": "Post Esc if Caps is tapped, Control if held.",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "left_control",
+                                    "key_code": "caps_lock",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -197,18 +245,18 @@
             "simple_modifications": [
                 {
                     "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": {
-                        "key_code": "left_control"
-                    }
-                },
-                {
-                    "from": {
                         "key_code": "escape"
                     },
                     "to": {
                         "key_code": "caps_lock"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "application"
+                    },
+                    "to": {
+                        "key_code": "right_command"
                     }
                 }
             ],

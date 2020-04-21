@@ -4,7 +4,7 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 source /Users/cbpodd/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 # Path
-export PATH="/Users/cbpodd/bin/context/tex/texmf-osx-64/bin:/Users/cbpodd/sbin:/Users/cbpodd/bin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/.bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
+export PATH="/Users/cbpodd/bin/context/tex/texmf-osx-64/bin:/Users/cbpodd/sbin:/Users/cbpodd/bin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
 fpath+=~/.config
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#B3B3B3'
@@ -57,9 +57,12 @@ function singleDisplay() {
 function brewInstall() {
     brew update
     brew upgrade
-    brew install $1
+    for var in "$@"
+    do
+        brew install "$var"
+    done
 
-    if [-e ~/.config/brew/Brewfile ]
+    if [ -e ~/.config/brew/Brewfile ]
     then
         rm ~/.config/brew/Brewfile
     fi
@@ -124,6 +127,9 @@ alias :q=exit
 alias m="make"
 alias mc="m clean"
 
+# Python
+alias pserver="python3 -m http.server 4444"
+
 # My own displayplacer commands
 alias nd="normalDisplays"
 alias md="mirrorDisplays"
@@ -134,3 +140,7 @@ alias bi="brewInstall"
 
 # Others
 alias rq='sed -E "s/\"//g"'
+alias preview='open -a "Preview.app"'
+
+# Dipplanner
+alias dp="dipplanner"
