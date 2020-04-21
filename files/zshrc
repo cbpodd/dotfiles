@@ -13,23 +13,6 @@ antigen init ~/.config/antigen/antigenrc
 export EDITOR=vim
 
 # Custom Commands
-
-# Merges branch $1 into branch $2
-function gitMerge() {
-  	git checkout $1
-	git pull
-	git checkout $2
-	git merge $1
-	git push
-}
-
-function texc() {
-    file=$1
-    CORE=${file%\.*}
-    pdflatex "${file}"
-    open -a Preview "${CORE}.pdf"
-}
-
 RIGHT_MON_ID='E0CF5B67-FDDF-13D4-8C8D-64D7900F18A8'
 LEFT_MON_ID='6652BC2D-F818-E3CE-F64D-C9E890B19458'
 INTERNAL_SCREEN_ID='1B6E5E4F-F885-D5D9-12AC-423EA9E16E72'
@@ -85,21 +68,14 @@ alias ll="ls -lh"
 alias lla="ll -A"
 
 # Git
-alias g="git"
-alias ga="g add ."
-alias gc="g commit -S -m"
-alias gs="g status"
-alias gpl="g pull"
-alias gph="g push"
-alias gb="g branch"
-alias gch="g checkout"
-alias gf="g fetch"
-alias gr="g remote"
-alias grao="gr add origin"
+alias ga="git add ."
+alias gc="git commit -S -m"
+alias gs="git status"
+alias gpl="git pull"
+alias gph="git push"
+alias gb="git branch"
+alias gch="git checkout"
 alias ggraph="git log --oneline --graph --decorate --all"
-
-# Vim
-alias v="vim"
 
 # VirtualBox Command Line
 alias vbox="VBoxManage"
@@ -108,24 +84,14 @@ alias vbso='vbox controlvm "Ubuntu Server" poweroff --type headless'
 alias vboxc='vbsa && ssh vbox && vbso'
 
 # Shpotify - Spotify Command Line
-alias s="spotify"
-alias sn="s next"
-alias spv="s prev"
-alias sp="s pause"
-alias spy="s play"
-alias sq="s quit"
-alias ss="s status"
-
-# 3llo - Trello
-alias trello="3llo"
+alias sn="spotify next"
+alias spv="spotify prev"
+alias sp="spotify pause"
+alias ss="spotify status"
 
 # Common Vim Commands
 alias :e=vim
 alias :q=exit
-
-# Make
-alias m="make"
-alias mc="m clean"
 
 # Python
 alias pserver="python3 -m http.server 4444"
