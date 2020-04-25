@@ -1,0 +1,80 @@
+GUI Apps
+    Terminal
+    Display Manager with Shortcuts
+    Docker
+    Personal Browser
+    Development Browser
+    Keyboard Remapper
+    gVim
+    Microsoft Office
+    Python 3
+    Spotify
+
+Terminal Packages
+    CMake
+    External Monitor Display Controlling Software (displayplacer)
+    git
+    GPG
+    hub
+    JSON querying software (jq)
+    SSH
+    Terminal-Based File Explorer (nnn)
+    Terminal-Based Resource Monitor (htop)
+    Markdown Converter (pandoc)
+    Spotify Command Line Controller
+    Man
+    tldr
+    Terminal Multiplexer
+        Split panes
+        Tabs
+        Copying and pasting
+        Multiple sessions
+        Vim Keybindings
+    tree
+    vim
+    wget
+    Package Manager (brew)
+
+Commonly-Used Commands
+    List Files (ls)
+    Change Directory (cd)
+    Unix Makefiles (make)
+    Remove Files & Directories (rm)
+    Get Content of FIle (cat)
+    Move File (mv)
+    Get URL (curl)
+    Exit Terminal (exit)
+    Print to terminal (echo)
+    Open other apps (open)
+    Copy Files (cp)
+    Make Directories & Files (mkdir, touch)
+    Administrator Privileges (sudo)
+    Aliasing (alias)
+    Find Text in files, files in directory, files on computer (find, grep, ripgrep)
+    Replace/Format Text in stream (sed, awk)
+    Sort and Find Unique in stream (sort, uniq)
+    Move stdin to args (xargs)
+    Find full path to command (which)
+    
+
+Languages & Features
+    Java
+        Maven
+    Python
+        Anaconda
+        pip
+    C++
+        Compiler (g++)
+        Debugger (gdb)
+    JavaScript
+        Node.js
+        yarn
+
+Terminal Features
+    Terminal Prompt
+        Location
+        Git branch & status
+        Vim modes
+        Return of last command
+    Auto-completions (tab)
+    Auto-suggestions (right-arrow)
