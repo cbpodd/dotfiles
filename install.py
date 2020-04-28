@@ -53,9 +53,12 @@ def unix(files, folders, config):
         homePath = os.path.join(HOME, hf)
         if os.path.isdir(fullPath) and not os.path.isdir(homePath):
             os.symlink(fullPath, homePath)
+    configPath = os.path.join(HOME, hiddenConfig)
+    if not os.path.isdir(configPath):
+        os.makedirs(configPath)
     for c in config:
         fullPath = os.path.join(CWD, CONFIG_DIR, c)
-        homePath = os.path.join(HOME, hiddenConfig, c)
+        homePath = os.path.join(configPath, c)
         if os.path.exists(fullPath) and not os.path.exists(homePath):
             os.symlink(fullPath, homePath)
     return 0
