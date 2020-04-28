@@ -1,39 +1,38 @@
 GUI Apps
-    Terminal
-    Display Manager with Shortcuts
-    Docker
-    Personal Browser
-    Development Browser
+    Terminal - ML
+    Display Manager with Shortcuts - M
+    Docker - M
+    Personal Browser - ML
+    Development Browser - ML
     Keyboard Remapper
-    gVim
-    Microsoft Office
-    Python 3
-    Spotify
+    gVim - ML
+    Microsoft Office - ML
+    Python 3 - ML
+    Spotify - ML
 
 Terminal Packages
-    CMake
-    External Monitor Display Controlling Software (displayplacer)
-    git
-    GPG
-    hub
-    JSON querying software (jq)
-    SSH
-    Terminal-Based File Explorer (nnn)
-    Terminal-Based Resource Monitor (htop)
-    Markdown Converter (pandoc)
-    Spotify Command Line Controller
-    Man
-    tldr
-    Terminal Multiplexer
+    CMake - ML
+    External Monitor Display Controlling Software (displayplacer) - ML
+    git - ML
+    GPG - ML
+    hub - ML
+    JSON querying software (jq) - ML
+    SSH - ML
+    Terminal-Based File Explorer (nnn) - ML
+    Terminal-Based Resource Monitor (htop) - ML
+    Markdown Converter (pandoc) - ML
+    Spotify Command Line Controller - M
+    Man - ML
+    tldr - ML
+    Terminal Multiplexer - ML
         Split panes
         Tabs
         Copying and pasting
         Multiple sessions
         Vim Keybindings
-    tree
-    vim
-    wget
-    Package Manager (brew)
+    tree - ML
+    vim - ML
+    wget - ML
 
 Commonly-Used Commands
     List Files (ls)

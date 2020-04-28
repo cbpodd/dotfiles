@@ -76,6 +76,7 @@ alias gph="git push"
 alias gb="git branch"
 alias gch="git checkout"
 alias ggraph="git log --oneline --graph --decorate --all"
+alias gdcm='git add . && git commit -S -m "Default Commit Message" && git push'
 
 # VirtualBox Command Line
 alias vbox="VBoxManage"
