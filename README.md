@@ -1,9 +1,20 @@
 # dotfiles
 
-This repository holds all of the dotfile setups I use on my personal computer.  
+This repository holds all of the dotfile setups I use on my personal computer.
 
 # Installation Directions
 
-For each file or folder you'd like to add to your path, do the following:
+1.  Clone the Repository
 
-`ln -s <path-to-file> ~/.<file-name>`
+```git clone --recurse-submodules```
+
+2.  Execute the Installation Script
+
+```./install.py```
+
+# Troubleshooting
+
+1.  If you have permission issues, run
+
+```chmod 755 install.py```
+
