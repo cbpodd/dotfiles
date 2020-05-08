@@ -64,7 +64,19 @@ def unix(files, folders, config):
     return 0
 
 def windows(files, folders, config):
-    return 1
+    for f in files:
+        fullPath = os.path.join(CWD, FILES_DIR, f)
+        hf = hidden(f, UNIX)
+        homePath = os.path.join(HOME, hf)
+        if os.path.isfile(fullPath) and not os.path.isfile(homePath):
+            os.symlink(fullPath, homePath)
+    for folder in folders:
+        fullPath = os.path.join(CWD, folder)
+        hf = hidden(folder, UNIX)
+        homePath = os.path.join(HOME, hf)
+        if os.path.isdir(fullPath) and not os.path.isdir(homePath):
+            os.symlink(fullPath, homePath)
+    return 0
 
 def hidden(f, fs_type):
     if fs_type == UNIX:

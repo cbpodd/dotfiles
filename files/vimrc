@@ -9,8 +9,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins-----------------------------------------------
-Plugin 'Valloric/YouCompleteMe' " Syntax Checking
-Plugin 'w0rp/ale' " Asynchronous YCM
+" Plugin 'Valloric/YouCompleteMe' " Code Completion
+" Plugin 'w0rp/ale' " Asynchronous YCM
+" Plugin 'maralla/completor.vim' " New Completion
 Plugin 'jiangmiao/auto-pairs' " Auto-closing brackets
 Plugin 'ron89/thesaurus_query.vim' " Thesaurus Functionality
 Plugin 'tpope/vim-surround' " Change surrounding code
@@ -39,7 +40,11 @@ set guifont=Fixedsys:h10
 
 " Mouse -----------------------------------------------
 set mouse=a
-set term=xterm-256color
+if has('win32')
+    set term=win32
+else
+    set term=xterm-256color
+endif
 
 " Tabzz -------------------------------------------------
 " Whitespace.
@@ -107,20 +112,19 @@ augroup configgroup
 augroup END
 
 "  Configure YouCompleteMe -----------------------
-
-let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g :split \| YcmCompleter GoToDefinition<CR>
-let g:jedi#use_tabs_not_buffers = 1
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_register_as_syntastic_checker = 1 "default 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-
-" Ale Config -------------------------------------
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_insert_leave = 1
-" let g:ale_python_pylint_executable = '/home/cbpodd/anaconda3/bin/pylint'
+" let g:ycm_autoclose_preview_window_after_completion=1
+" nnoremap <leader>g :split \| YcmCompleter GoToDefinition<CR>
+" let g:jedi#use_tabs_not_buffers = 1
+" let g:ycm_show_diagnostics_ui = 1
+" let g:ycm_register_as_syntastic_checker = 1 "default 1
+" let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+" 
+" " Ale Config -------------------------------------
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_insert_leave = 1
+" " let g:ale_python_pylint_executable = '/home/cbpodd/anaconda3/bin/pylint'
 
 " Thesaurus Config ------------------------------
 nnoremap zt :ThesaurusQueryReplaceCurrentWord<CR>
