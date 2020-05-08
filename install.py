@@ -68,6 +68,8 @@ def windows(files, folders, config):
         fullPath = os.path.join(CWD, FILES_DIR, f)
         hf = hidden(f, UNIX)
         homePath = os.path.join(HOME, hf)
+        if f == 'Microsoft.PowerShell_profile.ps1':
+            homePath = os.path.join(HOME, 'Documents', 'WindowsPowerShell', f)
         if os.path.isfile(fullPath) and not os.path.isfile(homePath):
             os.symlink(fullPath, homePath)
     for folder in folders:

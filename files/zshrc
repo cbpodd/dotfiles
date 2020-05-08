@@ -96,6 +96,8 @@ alias :q=exit
 
 # Python
 alias pserver="python3 -m http.server 4444"
+alias py="python"
+alias p3="python3"
 
 # My own displayplacer commands
 alias nd="normalDisplays"
