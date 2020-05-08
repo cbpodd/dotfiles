@@ -27,8 +27,8 @@ Function Git-Add-Dot {
     git add .
 }
 
-Function Git-Commit-Message {
-    git commit -m
+Function Git-Commit-Message([string] $message) {
+    git commit -m $message
 }
 
 Function Git-Status {
@@ -77,7 +77,7 @@ New-Alias -Name la -Value List-All
 
 # Git
 New-Alias -Name ga -Value Git-Add-Dot
-New-Alias -Name gc -Value Git-Commit-Message
+New-Alias -Name gtcm -Value Git-Commit-Message
 New-Alias -Name gs -Value Git-Status
 New-Alias -Name gpl -Value Git-Pull
 New-Alias -Name gph -Value Git-Push

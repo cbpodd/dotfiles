@@ -69,7 +69,7 @@ alias lla="ll -A"
 
 # Git
 alias ga="git add ."
-alias gc="git commit -S -m"
+alias gcm="git commit -S -m"
 alias gs="git status"
 alias gpl="git pull"
 alias gph="git push"
