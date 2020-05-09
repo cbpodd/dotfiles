@@ -77,9 +77,15 @@ Function Git-Graph {
 }
 
 Function Git-Default-Commit {
-    Git-Add
-    Git-Commit "Default Commit Message"
-    Git-Push
+    git add .
+    git commit -m "Default Commit Message"
+    git push
+}
+
+Function Git-Add-Commit-Push([string] $message) {
+    git add .
+    git commit -m $message
+    git push
 }
 
 Function Python-Server {
@@ -112,6 +118,7 @@ New-Alias -Name la -Value List-All
 # Git
 New-Alias -Name ga -Value Git-Add-Dot
 New-Alias -Name gtcm -Value Git-Commit-Message
+New-Alias -Name gacp -Value Git-Add-Commit-Push
 New-Alias -Name gs -Value Git-Status
 New-Alias -Name gpl -Value Git-Pull
 New-Alias -Name gph -Value Git-Push
