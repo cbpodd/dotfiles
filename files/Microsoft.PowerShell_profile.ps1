@@ -1,23 +1,34 @@
-# TODO
-# Path
-# Right Prompt (exit code, vim mode)
 # Vim Mode
-# Left Prompt (git, path, user, powershell)
-# Auto-complete
-# Auto-suggest
-# Package Manager path?
-# sudo
-# open
-# curl
-# find, grep, ripgrep
-# sed, awk
-# sort, uniq
-# xargs
-# make
-# jq
-# hub
-# pandoc
-# wget
+# First time install
+# Install-Package -Name PSReadline
+# PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force
+
+Import-Module posh-git
+Set-PSReadlineOption -EditMode vi
+Set-PSReadlineOption -ViModeIndicator Prompt
+
+# Left Prompt (git, path, powershell)
+function Prompt {
+    # First Line
+    'PS ' + # Prompt Type
+    [System.Environment]::UserName + ' ' + # Current User
+    $(Get-Location) + ' ' + # Present Working Directory
+    $(Get-Date) + ' ' + # Current date/time
+    $(if ($LastExitCode -ge 1) 
+        { $LastExitCode }
+      else
+        { "Horray" }
+    ) + # Exit code of the last command, if not 0
+    [System.Environment]::NewLine + # Newline
+
+    # Second Line
+    $(if ($NestedPromptLevel -ge 1) { '>>' }) + '> ' # Last arrow
+}
+
+# sudo - must put command in quotes
+Function sudo([string] $command) {
+    Start-Process -Verb RunAs powershell.exe -Args "-executionpolicy bypass -command Set-Location \`"$PWD\`"; $command"
+}
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
@@ -104,8 +115,17 @@ Function Open-Powershell-Profile {
     vim ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
 }
 
+Function Get-Web-Content([string] $url) {
+    Invoke-WebRequest $url -useBasicParsing | Select-Object -Expand Content
+}
+
 # Overwrites of Existing Commands for better defaults
 # New-Alias -Name make -Value Make-Jobs
+
+# Unix Replacements
+New-Alias -Name web -Value Get-Web-Content
+New-Alias -Name uniq -Value Get-Unique
+New-Alias -Name grep -Value rg
 
 # Moving and Copying of Direcories
 New-Alias -Name cpd -Value Copy-Recurse
@@ -133,6 +153,7 @@ New-Alias -Name :e -Value vim
 # Open Profile Files
 New-Alias -Name vimrc -Value Vim-VimRC
 New-Alias -Name psprof -Value Open-Powershell-Profile
+New-Alias -Name psprofile -Value Open-Powershell-Profile
 
 # Python
 New-Alias -Name pserver -Value Python-Server
@@ -140,4 +161,4 @@ New-Alias -Name py -Value python
 New-Alias -Name p3 -Value python
 
 # Others
-# New-Alias -Name preview -Value 'open -a "Preview.app"'
+New-Alias -Name open -Value Start-Process

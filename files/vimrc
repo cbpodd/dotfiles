@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins-----------------------------------------------
 Plugin 'ron89/thesaurus_query.vim' " Thesaurus Functionality
+Plugin 'PProvost/vim-ps1' " Powershell Syntax
 Plugin 'mattn/emmet-vim' " HTML5 snippets
 " All of your Plugins must be added before the following line
 call vundle#end() 

@@ -53,6 +53,13 @@ function brewInstall() {
     brew bundle dump --file=~/.config/brew/Brewfile
 }
 
+# Git Scripts
+function gacp() {
+    git add .
+    git commit -m $1
+    git push
+}
+
 # Aliases
 
 # Overwrites of existing commands for better defaults
