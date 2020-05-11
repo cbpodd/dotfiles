@@ -9,11 +9,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins-----------------------------------------------
-Plugin 'Valloric/YouCompleteMe' " Syntax Checking
-Plugin 'w0rp/ale' " Asynchronous YCM
-Plugin 'jiangmiao/auto-pairs' " Auto-closing brackets
 Plugin 'ron89/thesaurus_query.vim' " Thesaurus Functionality
-Plugin 'tpope/vim-surround' " Change surrounding code
+Plugin 'PProvost/vim-ps1' " Powershell Syntax
 Plugin 'mattn/emmet-vim' " HTML5 snippets
 " All of your Plugins must be added before the following line
 call vundle#end() 
@@ -37,9 +34,13 @@ set showtabline=2
 syntax enable           " enable syntax processing
 set guifont=Fixedsys:h10
 
-" Mouse -----------------------------------------------
+" Ternal Features --------------------------------------
 set mouse=a
-set term=xterm-256color
+if has('win32')
+    set term=win32
+else
+    set term=xterm-256color
+endif
 
 " Tabzz -------------------------------------------------
 " Whitespace.
@@ -65,9 +66,6 @@ set undofile
 
 " Optimizations ----------------------------------------
 set lazyredraw          " redraw only when we need to
-
-" Movement ---------------------------------------------------
-set autochdir           " Change directory automatically
 
 " Search ---------------------------------------------------
 set incsearch           " search as characters are entered
@@ -106,25 +104,17 @@ augroup configgroup
     autocmd BufNewFile,BufRead *.csproj setlocal syntax=xml
 augroup END
 
-"  Configure YouCompleteMe -----------------------
-
-let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g :split \| YcmCompleter GoToDefinition<CR>
-let g:jedi#use_tabs_not_buffers = 1
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_register_as_syntastic_checker = 1 "default 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-
-" Ale Config -------------------------------------
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_insert_leave = 1
-" let g:ale_python_pylint_executable = '/home/cbpodd/anaconda3/bin/pylint'
-
 " Thesaurus Config ------------------------------
 nnoremap zt :ThesaurusQueryReplaceCurrentWord<CR>
 vnoremap zt y:ThesaurusQueryReplace <C-r>"<CR>
 
 " Emmet Vim -------------------------------------
 let g:user_emmet_leader_key='<leader>'
+
+" Do what plugins Do Talk -----------------------
+
+" Fuzzy File Searching --------------------------
+" Allow fuzzy file searching using :find
+set path+=**
+" Ignore certain paths when using :find
+set wildignore+=**/node_modules/**

@@ -14,7 +14,9 @@
             "zshrc",
             "tmux.conf"
         ],
-        "windows": []
+        "windows": [
+            "Microsoft.PowerShell_profile.ps1"
+        ]
     },
     "folders": {
         "shared": [

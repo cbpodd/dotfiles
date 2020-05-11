@@ -1,73 +1,8 @@
-GUI Apps
-    Terminal - ML
-    Display Manager with Shortcuts - M
-    Docker - M
-    Personal Browser - ML
-    Development Browser - ML
-    Keyboard Remapper
-    gVim - ML
-    Microsoft Office - ML
-    Python 3 - ML
-    Spotify - ML
-
 Terminal Packages
-    CMake - ML
-    External Monitor Display Controlling Software (displayplacer) - ML
-    git - ML
-    GPG - ML
     hub - ML
     JSON querying software (jq) - ML
-    SSH - ML
-    Terminal-Based File Explorer (nnn) - ML
-    Terminal-Based Resource Monitor (htop) - ML
     Markdown Converter (pandoc) - ML
-    Spotify Command Line Controller - M
-    Man - ML
-    tldr - ML
-    Terminal Multiplexer - ML
-        Split panes
-        Tabs
-        Copying and pasting
-        Multiple sessions
-        Vim Keybindings
-    tree - ML
-    vim - ML
     wget - ML
-
-Commonly-Used Commands
-    List Files (ls)
-    Change Directory (cd)
-    Unix Makefiles (make)
-    Remove Files & Directories (rm)
-    Get Content of FIle (cat)
-    Move File (mv)
-    Get URL (curl)
-    Exit Terminal (exit)
-    Print to terminal (echo)
-    Open other apps (open)
-    Copy Files (cp)
-    Make Directories & Files (mkdir, touch)
-    Administrator Privileges (sudo)
-    Aliasing (alias)
-    Find Text in files, files in directory, files on computer (find, grep, ripgrep)
-    Replace/Format Text in stream (sed, awk)
-    Sort and Find Unique in stream (sort, uniq)
-    Move stdin to args (xargs)
-    Find full path to command (which)
-    
-
-Languages & Features
-    Java
-        Maven
-    Python
-        Anaconda
-        pip
-    C++
-        Compiler (g++)
-        Debugger (gdb)
-    JavaScript
-        Node.js
-        yarn
 
 Terminal Features
     Terminal Prompt
@@ -77,3 +12,7 @@ Terminal Features
         Return of last command
     Auto-completions (tab)
     Auto-suggestions (right-arrow)
+    Terminal Multiplexer
+        Split panes
+        Tabs
+        Copying and pasting
