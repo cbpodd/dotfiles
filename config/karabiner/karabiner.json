@@ -15,54 +15,6 @@
                     "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
-                     {
-                        "description": "Right OS is Shift+OS",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "right_command",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Right shift is Alt+Shift",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "right_shift",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
                     {
                         "description": "Post Esc if Caps is tapped, Control if held.",
                         "manipulators": [
@@ -91,14 +43,14 @@
                         ]
                     },
                     {
-                        "description": "Right alt opens alacritty",
+                        "description": "C-t opens Alacritty",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "right_option",
+                                    "key_code": "t",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
+                                        "mandatory": [
+                                            "left_control"
                                         ]
                                     }
                                 },
@@ -245,18 +197,18 @@
             "simple_modifications": [
                 {
                     "from": {
-                        "key_code": "escape"
-                    },
-                    "to": {
-                        "key_code": "caps_lock"
-                    }
-                },
-                {
-                    "from": {
                         "key_code": "application"
                     },
                     "to": {
                         "key_code": "right_command"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "escape"
+                    },
+                    "to": {
+                        "key_code": "caps_lock"
                     }
                 }
             ],
