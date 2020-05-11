@@ -26,9 +26,15 @@ filetype indent on        " load filetype-specific indent files
 set wildmenu              " visual autocomplete for command menu
 " set showmatch             " highlight matching [{()}]
 highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%82v', 100)
 set guioptions+=e
 set showtabline=2
+
+" Text Width ------------------------------------------
+set textwidth=80
+
+" Copying on Macos ------------------------------------
+noremap <C-c> :w !pbcopy<CR><CR>
 
 " Syntax ----------------------------------------------
 syntax enable           " enable syntax processing

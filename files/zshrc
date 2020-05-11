@@ -76,7 +76,7 @@ alias lla="ll -A"
 
 # Git
 alias ga="git add ."
-alias gcm="git commit -S -m"
+alias gtcm="git commit -S -m"
 alias gs="git status"
 alias gpl="git pull"
 alias gph="git push"
@@ -99,7 +99,6 @@ alias ss="spotify status"
 
 # Common Vim Commands
 alias :e=vim
-alias :q=exit
 
 # Python
 alias pserver="python3 -m http.server 4444"
@@ -111,12 +110,6 @@ alias nd="normalDisplays"
 alias md="mirrorDisplays"
 alias sd="singleDisplay"
 
-# Brew
-alias bi="brewInstall"
-
 # Others
 alias rq='sed -E "s/\"//g"'
 alias preview='open -a "Preview.app"'
-
-# Dipplanner
-alias dp="dipplanner"
