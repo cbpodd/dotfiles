@@ -73,6 +73,7 @@ alias cat="cat -n"           # -n displays line numbers
 alias la="ls -A"
 alias ll="ls -lh"
 alias lla="ll -A"
+alias rmd="rm -rf"
 
 # Git
 alias ga="git add ."

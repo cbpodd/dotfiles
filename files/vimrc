@@ -3,13 +3,12 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins-----------------------------------------------
-Plugin 'ron89/thesaurus_query.vim' " Thesaurus Functionality
 Plugin 'PProvost/vim-ps1' " Powershell Syntax
 Plugin 'mattn/emmet-vim' " HTML5 snippets
 " All of your Plugins must be added before the following line
@@ -24,23 +23,13 @@ set ruler                 " Show ruler on bottom
 set showcmd               " show command in bottom bar
 filetype indent on        " load filetype-specific indent files
 set wildmenu              " visual autocomplete for command menu
-" set showmatch             " highlight matching [{()}]
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%82v', 100)
 set guioptions+=e
 set showtabline=2
-
-" Text Width ------------------------------------------
 set textwidth=80
-
-" Copying on Macos ------------------------------------
-noremap <C-c> :w !pbcopy<CR><CR>
-
-" Syntax ----------------------------------------------
-syntax enable           " enable syntax processing
 set guifont=Fixedsys:h10
-
-" Ternal Features --------------------------------------
+syntax enable           " enable syntax processing
 set mouse=a
 if has('win32')
     set term=win32
@@ -60,7 +49,6 @@ set softtabstop=4
 set shiftwidth=4
 set backspace=indent,eol,start
 set smarttab
-" Indentation
 set autoindent
 set cindent
 
@@ -86,13 +74,8 @@ set foldignore=
 let mapleader = ","
 
 " Map [] space to add new line inplace -----------------------
-nnoremap <silent> ]<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
-nnoremap <silent> [<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
-
-" Tabs -------------------------------------------------------
-nnoremap t :tabnew<space> 
-nnoremap J :tabr<cr>
-nnoremap K :tabl<cr>
+nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
+nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
 " File Specific Settings ---------------------------------------
 augroup configgroup
@@ -110,17 +93,79 @@ augroup configgroup
     autocmd BufNewFile,BufRead *.csproj setlocal syntax=xml
 augroup END
 
-" Thesaurus Config ------------------------------
-nnoremap zt :ThesaurusQueryReplaceCurrentWord<CR>
-vnoremap zt y:ThesaurusQueryReplace <C-r>"<CR>
-
 " Emmet Vim -------------------------------------
+" ,, after typing in emmet snippet will fill it
+" See https://docs.emmet.io for mappings
 let g:user_emmet_leader_key='<leader>'
+
+" Tabs ------------------------------------------
+nnoremap t :tabnew 
+nnoremap J :tabp<CR>
+nnoremap K :tabn<CR>
 
 " Do what plugins Do Talk -----------------------
 
 " Fuzzy File Searching --------------------------
+" Always open your vim at the root of your project
 " Allow fuzzy file searching using :find
 set path+=**
-" Ignore certain paths when using :find
 set wildignore+=**/node_modules/**
+
+" Tags with ctags -------------------------------
+" Run this command when entering a workspace
+" C-] jumps you down tag stack
+" gC-] jumps you down an ambiguous tag
+" :pop jumps you up a tag stack
+command! MakeTags !ctags -R .
+
+" Autocomplete ---------------------------------
+" Included in vim, doesn't need any configuration
+" C-xC-n for JUST this file
+" C-xC-f for filenames
+" C-xC-] for tags
+" C-n for default complete
+" Use C-n and C-p to go through options
+
+" File Browsing --------------------------------
+" Tweaks for browsing
+let g:netrw_banner=0        " Disable banner
+let g:netrw_browse_split=4  " Open in prior windows
+let g:netrw_altv=1          " Open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+" Now we can:
+" - :edit a folder to open file browser
+" - <CR>/v/t to open in an h-split/v-split/tab
+" - check |netrw-browser-maps| for more mappings
+
+" Snippets ------------------------------------
+" Each of these is a custom command that reads
+" in an external file snippet, and puts it in 
+" where you would like it
+
+" Read in empty HTML template, move cursor to title
+nnoremap <leader>html :-1read $HOME/.vim/snippets/empty.html<CR>4jwf>a
+
+" Build Integration ---------------------------
+" Vim has internal `make` command, only needs
+" to be run
+" Spaces must be escaped
+" set makeprg=mvn\ exec:java
+
+" Run :make to run the make command
+" If the output is formatted in Quickfix Format,
+" can use the following commands to work with errors:
+" - :cl to list errors
+" - :cc# to jump to error by number
+" - :cn and :cp to navigate forward and back
+
+" Copy and Pasting ---------------------------
+" "'letter'd cuts stuff into register 'letter'
+" "'letter'p pastes stuff from register 'letter'
+" "'letter'y Copies stuff into register 'letter'
+" 'letter' + is system clipboard
+vnoremap <C-x> "+d
+vnoremap <C-c> "+y
+noremap <C-v> "+p
