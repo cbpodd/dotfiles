@@ -15,7 +15,8 @@
             "tmux.conf"
         ],
         "windows": [
-            "Microsoft.PowerShell_profile.ps1"
+            "Microsoft.PowerShell_profile.ps1",
+            "wtprofile.json"
         ]
     },
     "folders": {

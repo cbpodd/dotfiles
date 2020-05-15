@@ -10,10 +10,10 @@ Set-PSReadlineOption -ViModeIndicator Prompt
 # Left Prompt (git, path, powershell)
 function Prompt {
     # First Line
-    Write-Host 'PS ' -NoNewline -ForegroundColor Blue # Prompt Type
-    Write-Host "$ENV:UserName @ " -NoNewline -ForegroundColor Green # Current User
-    Write-Host "$(Get-Location) " -NoNewline -ForegroundColor Yellow # Present Working Directory
-    Write-Host "$(Get-Date)" -NoNewline -ForegroundColor DarkGray # Current date/time
+    Write-Host 'PS ' -NoNewline -ForegroundColor White # Prompt Type
+    Write-Host "$ENV:UserName @ " -NoNewline -ForegroundColor Blue # Current User
+    Write-Host "$(Get-Location) " -NoNewline -ForegroundColor Green # Present Working Directory
+    Write-Host "$(Get-Date)" -NoNewline -ForegroundColor Yellow # Current date/time
     if ($LastExitCode -ge 1)  { # Exit code of the last command, if not 0
             Write-Host " $LastExitCode" -NoNewLine -ForegroundColor Red
     }     #) + 

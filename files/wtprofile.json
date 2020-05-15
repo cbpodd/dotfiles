@@ -1,0 +1,149 @@
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+
+    "profiles":
+    [
+        {
+            "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+            "name": "Windows PowerShell",
+            "commandline": "powershell.exe",
+            "hidden": false,
+            "colorScheme": "default",
+            "fontSize": 10,
+            "fontFace": "DEC Terminal",
+            "cursorShape": "filledBox"
+        },
+        {
+            "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+            "hidden": false,
+            "name": "Azure Cloud Shell",
+            "source": "Windows.Terminal.Azure"
+        }
+    ],
+    "schemes": [
+        {
+            "name": "default",
+            "purple": "#d34590",
+            "white": "#e7e7e7",
+            "black": "#000000",
+            "red":     "#FF4652",
+            "green":   "#40FF43",
+            "yellow":  "#FBFF00",
+            "blue":    "#4B97E2",
+            "magenta": "#D974FF",
+            "cyan":    "#59EBFF",
+            "brightPurple": "#d34590",
+            "brightWhite": "#e7e7e7",
+            "brightBlack": "#000000",
+            "brightRed":     "#FF4652",
+            "brightGreen":   "#40FF43",
+            "brightYellow":  "#FBFF00",
+            "brightBlue":    "#4B97E2",
+            "brightMagenta": "#D974FF",
+            "brightCyan":    "#59EBFF",
+            "background": "#222222",
+            "foreground": "#FFFFFF"
+        }
+    ],
+
+  "keybindings": [
+        {
+            "command": "newTab",
+            "keys": [
+                "alt+c"
+            ]
+        },
+        {
+            "command": "closeTab",
+            "keys": [
+                "alt+x"
+            ]
+       },
+       {
+            "command": "nextTab",
+            "keys": [
+                "shift+right"
+            ]
+       },
+       {
+            "command": "prevTab",
+            "keys": [
+                "shift+left"
+            ]
+       },
+       {
+            "command": "paste",
+            "keys": [
+                "ctrl+v"
+            ]
+       },
+       {
+            "command": {
+                "action": "splitPane",
+                "split": "vertical"
+            },
+            "keys": [
+                "alt+v"
+            ]
+       },
+       {
+            "command": {
+                "action": "splitPane",
+                "split": "horizontal"
+            },
+            "keys": [
+                "alt+s"
+            ]
+       },
+       {
+            "command": {
+                "action": "moveFocus",
+                "direction": "left"
+            },
+            "keys": [
+                "alt+h"
+            ]
+       },
+       {
+            "command": {
+                "action": "moveFocus",
+                "direction": "right"
+            },
+            "keys": [
+                "alt+l"
+            ]
+       },
+       {
+            "command": {
+                "action": "moveFocus",
+                "direction": "down"
+            },
+            "keys": [
+                "alt+j"
+            ]
+       },
+       {
+            "command": {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "keys": [
+                "alt+k"
+            ]
+       },
+       {
+           "command": "scrollUpPage",
+           "keys": [
+               "ctrl+u"
+           ]
+       },
+       {
+           "command": "scrollDownPage",
+           "keys": [
+               "ctrl+d"
+           ]
+       }
+   ]
+}
