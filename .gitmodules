@@ -1,3 +1,7 @@
 [submodule "vim/bundle/Vundle.vim"]
 	path = vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim
+
+[submodule "sbin/gitwatch"]
+	path = sbin/gitwatch
+	url = https://github.com/gitwatch/gitwatch

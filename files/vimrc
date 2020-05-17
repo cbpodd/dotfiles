@@ -11,6 +11,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugins-----------------------------------------------
 Plugin 'PProvost/vim-ps1' " Powershell Syntax
 Plugin 'mattn/emmet-vim' " HTML5 snippets
+Plugin 'sheerun/vim-polyglot' " Language Packs
+Plugin 'davidhalter/jedi-vim' " Python Autocomplete
 " All of your Plugins must be added before the following line
 call vundle#end() 
 filetype plugin on
