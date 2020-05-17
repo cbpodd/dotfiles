@@ -10,22 +10,24 @@ Set-PSReadlineOption -ViModeIndicator Prompt
 # Left Prompt (git, path, powershell)
 function Prompt {
     # First Line
-    'PS ' + # Prompt Type
-    [System.Environment]::UserName + ' ' + # Current User
-    $(Get-Location) + ' ' + # Present Working Directory
-    $(Get-Date) + ' ' + # Current date/time
-    $(if ($LastExitCode -ge 1) 
-        { $LastExitCode }
-      else
-        { "Horray" }
-    ) + # Exit code of the last command, if not 0
-    [System.Environment]::NewLine + # Newline
+    Write-Host 'PS ' -NoNewline -ForegroundColor White # Prompt Type
+    Write-Host "$ENV:UserName @ " -NoNewline -ForegroundColor Blue # Current User
+    Write-Host "$(Get-Location) " -NoNewline -ForegroundColor Green # Present Working Directory
+    Write-Host "$(Get-Date)" -NoNewline -ForegroundColor Yellow # Current date/time
+    if ($LastExitCode -ge 1)  { # Exit code of the last command, if not 0
+            Write-Host " $LastExitCode" -NoNewLine -ForegroundColor Red
+    }     #) + 
+    Write-VcsStatus
+    Write-Host "" # Newline
 
     # Second Line
-    $(if ($NestedPromptLevel -ge 1) { '>>' }) + '> ' # Last arrow
+    $(if ($NestedPromptLevel -ge 1) {
+        Write-Host '>' -NoNewLine -ForegroundColor White
+    })
+    return '> ' # Last arrow
 }
 
-# sudo - must put command in quotes
+# sudo - must put command in quotes TODO: remove quotes from string
 Function sudo([string] $command) {
     Start-Process -Verb RunAs powershell.exe -Args "-executionpolicy bypass -command Set-Location \`"$PWD\`"; $command"
 }
