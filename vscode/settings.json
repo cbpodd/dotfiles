@@ -1,0 +1,25 @@
+{
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [
+        80
+    ],
+    "vim.leader": ",",
+    "vim.normalModeKeyBindingsNonRecursive": [
+    {
+        "before": ["]", "<space>"],
+        "after": ["o", "<esc>", "k"]
+    },
+    {
+        "before": ["[", "<space>"],
+        "after": ["O", "<esc>", "j"]
+    },
+    {
+        "before": ["J"],
+        "commands": [":tabp"]
+    },
+    {
+        "before": ["K"],
+        "commands": [":tabn"]
+    }
+    ]
+}

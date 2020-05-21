@@ -99,7 +99,7 @@ augroup END
 let g:user_emmet_leader_key='<leader>'
 
 " Tabs ------------------------------------------
-nnoremap t :tabnew 
+nnoremap T :tabnew 
 nnoremap J :tabp<CR>
 nnoremap K :tabn<CR>
 

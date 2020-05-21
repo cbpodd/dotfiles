@@ -164,3 +164,4 @@ New-Alias -Name p3 -Value python
 
 # Others
 New-Alias -Name open -Value Start-Process
+New-Alias -Name wg -Value winget
