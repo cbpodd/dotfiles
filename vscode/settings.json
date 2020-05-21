@@ -21,5 +21,6 @@
         "before": ["K"],
         "commands": [":tabn"]
     }
-    ]
+    ],
+    "explorer.confirmDelete": false
 }
