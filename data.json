@@ -24,8 +24,12 @@
             "vim",
             "ssh"
         ],
-        "macos": [],
-        "linux": [],
+        "macos": [
+            "sbin"
+        ],
+        "linux": [
+            "sbin"
+        ],
         "windows": []
     },
     "config": {
