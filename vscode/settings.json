@@ -22,5 +22,6 @@
         "commands": [":tabn"]
     }
     ],
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "workbench.startupEditor": "newUntitledFile"
 }
