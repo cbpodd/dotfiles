@@ -43,11 +43,11 @@
                         ]
                     },
                     {
-                        "description": "C-t opens Alacritty",
+                        "description": "C-1 opens Alacritty",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "t",
+                                    "key_code": "1",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_control"
@@ -57,6 +57,69 @@
                                 "to": [
                                     {
                                         "shell_command": "open -a 'Alacritty.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "C-2 opens Microsoft Edge",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "2",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Microsoft Edge.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "C-3 opens Visual Studio Code",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "3",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Visual Studio Code.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "C-4 opens Microsoft Edge",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "4",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Microsoft Outlook.app'"
                                     }
                                 ],
                                 "type": "basic"

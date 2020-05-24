@@ -15,6 +15,7 @@ VSCODE_DIR = 'vscode'
 HOME = str(Path.home())
 CWD = os.getcwd()
 CODEWINDOWS = os.path.join(HOME, "AppData", "Roaming", "Code", "User")
+CODEMACOS = os.path.join(HOME, "Library", "Application Support", "Code", "User")
 
 def main():
     with open('data.json') as f:
@@ -23,6 +24,7 @@ def main():
         platform_name = ''
         fs_type = UNIX
         if os_type.startswith('darwin'):
+            setupVSCode(CODEMACOS)
             platform_name = MACOS
         elif os_type.startswith('win32'):
             platform_name = WINDOWS
@@ -48,7 +50,6 @@ def setupVSCode(CODE):
         codePath = os.path.join(CODE, f)
         if os.path.exists(fullPath) and not os.path.exists(codePath):
             os.symlink(fullPath, codePath)
- 
 
 def unix(files, folders, config):
     hiddenConfig = hidden(CONFIG_DIR, UNIX)

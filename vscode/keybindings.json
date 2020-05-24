@@ -78,5 +78,21 @@
     {
         "key": "shift+left",
         "command": "workbench.action.terminal.focusPrevious"
+    },
+    {
+        "key": "alt+f",
+        "command": "workbench.view.explorer"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-workbench.view.explorer"
+    },
+    {
+        "key": "alt+e",
+        "command": "workbench.action.focusAboveGroup"
+    },
+    {
+        "key": "cmd+k cmd+up",
+        "command": "-workbench.action.focusAboveGroup"
     }
 ]
