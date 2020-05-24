@@ -48,5 +48,16 @@
             "yarn"
         ],
         "windows": []
+    },
+    "sbin": {
+        "shared": [
+            {
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/latex/texc.py",
+                "name": "texc"
+            }
+        ],
+        "macos": [],
+        "linux": [],
+        "windows": []
     }
 }

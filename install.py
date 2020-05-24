@@ -4,6 +4,7 @@ import sys
 import json
 import os
 from pathlib import Path
+from urllib.request import urlretrieve as wget
 
 WINDOWS = 'windows'
 LINUX = 'linux'
@@ -36,12 +37,13 @@ def main():
         files = data['files']['shared'] + data['files'][platform_name]
         folders = data['folders']['shared'] + data['folders'][platform_name]
         config = data['config']['shared'] + data['config'][platform_name]
+        sbinFiles = data['sbin']['shared'] + data['sbin'][platform_name]
 
 
         if fs_type == UNIX:
-            return unix(files, folders, config)
+            return unix(files, folders, config, sbinFiles)
 
-        return windows(files, folders, config)
+        return windows(files, folders, config, sbinFiles)
 
 def setupVSCode(CODE):
     repoDir = os.path.join(CWD, VSCODE_DIR)
@@ -51,31 +53,14 @@ def setupVSCode(CODE):
         if os.path.exists(fullPath) and not os.path.exists(codePath):
             os.symlink(fullPath, codePath)
 
-def unix(files, folders, config):
-    hiddenConfig = hidden(CONFIG_DIR, UNIX)
-    for f in files:
-        fullPath = os.path.join(CWD, FILES_DIR, f)
-        hf = hidden(f, UNIX)
-        homePath = os.path.join(HOME, hf)
-        if os.path.isfile(fullPath) and not os.path.isfile(homePath):
-            os.symlink(fullPath, homePath)
-    for folder in folders:
-        fullPath = os.path.join(CWD, folder)
-        hf = hidden(folder, UNIX)
-        homePath = os.path.join(HOME, hf)
-        if os.path.isdir(fullPath) and not os.path.isdir(homePath):
-            os.symlink(fullPath, homePath)
-    configPath = os.path.join(HOME, hiddenConfig)
-    if not os.path.isdir(configPath):
-        os.makedirs(configPath)
-    for c in config:
-        fullPath = os.path.join(CWD, CONFIG_DIR, c)
-        homePath = os.path.join(configPath, c)
-        if os.path.exists(fullPath) and not os.path.exists(homePath):
-            os.symlink(fullPath, homePath)
+def unix(files, folders, config, sbinFiles):
+    linkFiles(files)
+    linkFolders(folders)
+    populateConfig(config)
+    populateSbin(sbinFiles)
     return 0
 
-def windows(files, folders, config):
+def windows(files, folders, config, sbin):
     for f in files:
         fullPath = os.path.join(CWD, FILES_DIR, f)
         hf = hidden(f, UNIX)
@@ -91,13 +76,48 @@ def windows(files, folders, config):
                 os.symlink(fullPath, actualPath)
         if os.path.isfile(fullPath) and not os.path.isfile(homePath):
             os.symlink(fullPath, homePath)
+    linkFolders(folders)
+    populateSbin(sbin)
+    return 0
+
+def linkFiles(files):
+    for f in files:
+        fullPath = os.path.join(CWD, FILES_DIR, f)
+        hf = hidden(f, UNIX)
+        homePath = os.path.join(HOME, hf)
+        if os.path.isfile(fullPath) and not os.path.isfile(homePath):
+            os.symlink(fullPath, homePath)
+
+def populateConfig(config):
+    hiddenConfig = hidden(CONFIG_DIR, UNIX)
+    configPath = os.path.join(HOME, hiddenConfig)
+    if not os.path.isdir(configPath):
+        os.makedirs(configPath)
+    for c in config:
+        fullPath = os.path.join(CWD, CONFIG_DIR, c)
+        homePath = os.path.join(configPath, c)
+        if os.path.exists(fullPath) and not os.path.exists(homePath):
+            os.symlink(fullPath, homePath)
+
+def populateSbin(sbinFiles):
+    sbinPath = os.path.join(HOME, 'sbin')
+    if not os.path.isdir(sbinPath):
+        os.makedirs(sbinPath)
+    for obj in sbinFiles:
+        url = obj['url']
+        name = obj['name']
+        destination = os.path.join(sbinPath, name)
+        wget(url, destination)
+        os.chmod(destination, 0o775)
+
+def linkFolders(folders):
     for folder in folders:
         fullPath = os.path.join(CWD, folder)
         hf = hidden(folder, UNIX)
         homePath = os.path.join(HOME, hf)
         if os.path.isdir(fullPath) and not os.path.isdir(homePath):
             os.symlink(fullPath, homePath)
-    return 0
+ 
 
 def hidden(f, fs_type):
     if fs_type == UNIX:

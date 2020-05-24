@@ -4,7 +4,7 @@
 # source /Users/cbpodd/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 # Path
-export PATH="/Users/cbpodd/bin/context/tex/texmf-osx-64/bin:/Users/cbpodd/.sbin:/Users/cbpodd/.sbin/gitwatch:/Users/cbpodd/bin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
+export PATH="/Users/cbpodd/bin/context/tex/texmf-osx-64/bin:/Users/cbpodd/sbin:/Users/cbpodd/bin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
 fpath+=~/.config
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#B3B3B3'
