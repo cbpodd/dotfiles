@@ -24,12 +24,8 @@
             "vim",
             "ssh"
         ],
-        "macos": [
-            "sbin"
-        ],
-        "linux": [
-            "sbin"
-        ],
+        "macos": [],
+        "linux": [],
         "windows": []
     },
     "config": {
@@ -54,6 +50,10 @@
             {
                 "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/latex/texc.py",
                 "name": "texc"
+            },
+            {
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/maven/mvn.py",
+                "name": "mvn"
             }
         ],
         "macos": [],

@@ -4,7 +4,7 @@
 # source /Users/cbpodd/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 # Path
-export PATH="/Users/cbpodd/bin/context/tex/texmf-osx-64/bin:/Users/cbpodd/sbin:/Users/cbpodd/bin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/bin/apache-maven-3.6.3/bin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin"
+export PATH=":/Users/cbpodd/sbin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin"
 fpath+=~/.config
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#B3B3B3'
@@ -35,22 +35,6 @@ function mirrorDisplays() {
 
 function singleDisplay() {
     displayplacer "id:$INTERNAL_SCREEN_ID $SINGLE_MODE $NO_ROTATE origin:(0,0)"
-}
-
-function brewInstall() {
-    brew update
-    brew upgrade
-    for var in "$@"
-    do
-        brew install "$var"
-    done
-
-    if [ -e ~/.config/brew/Brewfile ]
-    then
-        rm ~/.config/brew/Brewfile
-    fi
-
-    brew bundle dump --file=~/.config/brew/Brewfile
 }
 
 # Git Scripts
