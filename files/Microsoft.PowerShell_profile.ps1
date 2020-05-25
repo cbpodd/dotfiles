@@ -13,12 +13,12 @@ function Prompt {
     Write-Host 'PS ' -NoNewline -ForegroundColor White # Prompt Type
     Write-Host "$ENV:UserName @ " -NoNewline -ForegroundColor Blue # Current User
     Write-Host "$(Get-Location) " -NoNewline -ForegroundColor Green # Present Working Directory
-    Write-Host "$(Get-Date)" -NoNewline -ForegroundColor Yellow # Current date/time
+    # Write-Host "$(Get-Date)" -NoNewline -ForegroundColor Yellow # Current date/time
     if ($LastExitCode -ge 1)  { # Exit code of the last command, if not 0
             Write-Host " $LastExitCode" -NoNewLine -ForegroundColor Red
     }     #) + 
     Write-VcsStatus
-    Write-Host "" # Newline
+    Write-Host " " -NoNewLine # Space
 
     # Second Line
     $(if ($NestedPromptLevel -ge 1) {
