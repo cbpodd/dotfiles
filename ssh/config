@@ -1,9 +1,0 @@
-Host vbox
-    HostName 127.0.0.1
-    StrictHostKeyChecking no
-    User cbpodd
-    Port 2222 
-
-Host azure
-    HostName 104.42.75.206
-    User cbpodd
