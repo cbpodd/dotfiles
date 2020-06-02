@@ -165,3 +165,7 @@ New-Alias -Name p3 -Value python
 # Others
 New-Alias -Name open -Value Start-Process
 New-Alias -Name wg -Value winget
+
+Set-Alias az "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin\az.cmd" -Scope Global
+
+Set-Alias nuget C:\Users\t-capodd\one\AzS-Infra-Orch\out\CloudTest\Scripts\nuget.exe -Scope Global
