@@ -50,8 +50,8 @@
         ],
         "macos": [
             {
-                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/texc.py",
-                "name": "texc"
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/pdflatex.py",
+                "name": "pdflatex"
             },
             {
                 "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/mvn.py",
@@ -64,8 +64,8 @@
         ],
         "linux": [
             {
-                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/texc.py",
-                "name": "texc"
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/pdflatex.py",
+                "name": "pdflatex"
             },
             {
                 "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/mvn.py",
@@ -78,8 +78,8 @@
         ],
         "windows": [
             {
-                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/texc.py",
-                "name": "texc"
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/pdflatex.py",
+                "name": "pdflatex"
             },
             {
                 "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/mvn.py",
