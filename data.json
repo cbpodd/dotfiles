@@ -50,32 +50,44 @@
         ],
         "macos": [
             {
-                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/latex/texc.py",
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/texc.py",
                 "name": "texc"
             },
             {
-                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/maven/mvn.py",
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/mvn.py",
                 "name": "mvn"
+            },
+            {
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/mergepdfs.py",
+                "name": "mergepdfs"
             }
         ],
         "linux": [
             {
-                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/latex/texc.py",
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/texc.py",
                 "name": "texc"
             },
             {
-                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/maven/mvn.py",
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/mvn.py",
                 "name": "mvn"
+            },
+            {
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/mergepdfs.py",
+                "name": "mergepdfs"
             }
         ],
         "windows": [
             {
-                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/latex/texc.py",
-                "name": "texc.py"
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/texc.py",
+                "name": "texc"
             },
             {
-                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/maven/mvn.py",
-                "name": "mvn.py"
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/mvn.py",
+                "name": "mvn"
+            },
+            {
+                "url": "https://raw.githubusercontent.com/cbpodd/dockerfiles/master/scripts/mergepdfs.py",
+                "name": "mergepdfs"
             }
         ]
     }

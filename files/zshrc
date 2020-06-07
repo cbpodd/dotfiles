@@ -98,3 +98,6 @@ alias sd="singleDisplay"
 # Others
 alias rq='sed -E "s/\"//g"'
 alias preview='open -a "Preview.app"'
+
+# Noglobs
+alias mergepdfs='noglob mergepdfs'
