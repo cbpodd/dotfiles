@@ -25,11 +25,8 @@ set ruler                 " Show ruler on bottom
 set showcmd               " show command in bottom bar
 filetype indent on        " load filetype-specific indent files
 set wildmenu              " visual autocomplete for command menu
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%82v', 100)
 set guioptions+=e
 set showtabline=2
-set textwidth=80
 set guifont=Fixedsys:h10
 syntax enable           " enable syntax processing
 set mouse=a

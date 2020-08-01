@@ -45,10 +45,6 @@ Function List-All {
     ls -Force
 }
 
-# Function Make-Jobs {
-#     make -j$(nproc)
-# }
-
 Function Copy-Recurse([string] $Path, [string]$Destination) {
     Copy-Item -Path $Path -Destination $Destination -Recurse
 }
@@ -121,13 +117,29 @@ Function Get-Web-Content([string] $url) {
     Invoke-WebRequest $url -useBasicParsing | Select-Object -Expand Content
 }
 
-# Overwrites of Existing Commands for better defaults
-# New-Alias -Name make -Value Make-Jobs
+Function Change-Dir-Back([int] $Number = 1) {
+    $base = "../"
+    $Path = ""
+    for ($i = 0; $i -lt $Number; $i++) {
+        $path += $base
+    }
+
+    Set-Location -Path $Path
+}
+
+Function Run-AutoHotKey {
+    ~\repos\dotfiles\files\default.ahk
+}
+
+Function Tree-File {
+    tree /f
+}
+
 
 # Unix Replacements
 New-Alias -Name web -Value Get-Web-Content
 New-Alias -Name uniq -Value Get-Unique
-New-Alias -Name grep -Value rg
+New-Alias -Name grep -Value Select-String
 
 # Moving and Copying of Direcories
 New-Alias -Name cpd -Value Copy-Recurse
@@ -136,6 +148,8 @@ New-Alias -Name touch -Value Create-File
 
 # Common Flags
 New-Alias -Name la -Value List-All
+New-Alias -Name cdb -Value Change-Dir-Back
+New-Alias -Name treef -Value Tree-File
 
 # Git
 New-Alias -Name ga -Value Git-Add-Dot
@@ -156,6 +170,7 @@ New-Alias -Name :e -Value vim
 New-Alias -Name vimrc -Value Vim-VimRC
 New-Alias -Name psprof -Value Open-Powershell-Profile
 New-Alias -Name psprofile -Value Open-Powershell-Profile
+New-Alias -Name ahk -Value Run-AutoHotKey
 
 # Python
 New-Alias -Name pserver -Value Python-Server
@@ -165,7 +180,3 @@ New-Alias -Name p3 -Value python
 # Others
 New-Alias -Name open -Value Start-Process
 New-Alias -Name wg -Value winget
-
-Set-Alias az "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin\az.cmd" -Scope Global
-
-Set-Alias nuget C:\Users\t-capodd\one\AzS-Infra-Orch\out\CloudTest\Scripts\nuget.exe -Scope Global

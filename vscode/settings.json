@@ -26,5 +26,13 @@
     "explorer.confirmDelete": false,
     "workbench.startupEditor": "newUntitledFile",
     "terminal.external.osxExec": "Alacritty.app",
-    "extensions.ignoreRecommendations": false
+    "extensions.ignoreRecommendations": false,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "go.formatTool": "goimports",
+    "codespaces.accountProvider": "Microsoft",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.languageServer": "Microsoft",
+    "team.showWelcomeMessage": false
 }
