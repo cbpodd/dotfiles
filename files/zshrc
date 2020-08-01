@@ -1,16 +1,26 @@
-# Java Default set to 1.8
-# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-
-# source /Users/cbpodd/Library/Preferences/org.dystroy.broot/launcher/bash/br
-
-# Path
+# Variables
 export PATH=":/Users/cbpodd/sbin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin"
-fpath+=~/.config
 
+# Path variables
+export repos="$HOME/repos"
+export KEYBASE="/Volumes/Keybase"
+export shared="$KEYBASE/team/camalina"
+export money="$shared/money"
+export mymoney="$money/cam"
+export pub="$KEYBASE/public/cbpodd"
+export priv="$KEYBASE/private/cbpodd"
+export docs="$priv/docs"
+export tmp="$priv/tmp"
+
+# Include secrets (not included in source control)
+source $HOME/.secret.sh
+
+# Zsh Config
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#B3B3B3'
 source ~/.config/antigen.zsh
 antigen init ~/.config/antigen/antigenrc
 export EDITOR=vim
+fpath+=~/.config
 
 # Custom Commands
 RIGHT_MON_ID='E0CF5B67-FDDF-13D4-8C8D-64D7900F18A8'
@@ -35,6 +45,21 @@ function mirrorDisplays() {
 
 function singleDisplay() {
     displayplacer "id:$INTERNAL_SCREEN_ID $SINGLE_MODE $NO_ROTATE origin:(0,0)"
+}
+
+function cdb() {
+    initialString='../'
+    finalString=$initialString
+    iterations=1
+    if test $# -eq 1; then
+        iterations=$1
+    fi
+
+    for _ in {1..$iterations}; do
+        finalString="$initialString$finalString"
+    done
+
+    cd $finalString
 }
 
 # Git Scripts
