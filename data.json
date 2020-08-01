@@ -21,8 +21,7 @@
     },
     "folders": {
         "shared": [
-            "vim",
-            "ssh"
+            "vim"
         ],
         "macos": [],
         "linux": [],
