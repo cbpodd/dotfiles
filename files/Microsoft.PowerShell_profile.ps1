@@ -14,21 +14,17 @@ Set-PSReadlineOption -ViModeIndicator Prompt
 
 # Microsoft-Specific (To be hidden in another file)
 $vms = @("IRVM01", "IRVM02", "IRVM03")
-Set-Item -Path Env:CDP_FILE_VERSION_NUMERIC_NOLEADINGZEROS -Value "3.1.1"
 $azs = "$HOME\one\AzureStack\Infrastructure\Orchestration"
 $gb = 'users/t-capodd'
 
 # Path variables
 $repos = "$HOME\repos"
 $go = "$HOME\go"
-$KEYBASE = "K:"
-$shared = "$KEYBASE\team\camalina"
-$money = "$shared\money"
+$ONEDRIVE = "$HOME\OneDrive"
+$od = $ONEDRIVE
+$shared = "$ONEDRIVE\shared"
+$money = "$shared\camalina\money"
 $mymoney = "$money\cam"
-$pub = "$KEYBASE\public\cbpodd"
-$priv = "$KEYBASE\private\cbpodd"
-$docs = "$priv\docs"
-$tmp = "$priv\tmp"
 
 # Left Prompt (git, path, powershell)
 function Prompt
@@ -49,6 +45,16 @@ function Prompt
         Write-Host '>' -NoNewLine -ForegroundColor White
     })
     return '> ' # Last arrow
+}
+
+# Fix internet connection issues
+function Fix-InternetIssues
+{
+    netsh winsock reset
+    netsh int ip reset
+    ipconfig /release
+    ipconfig /renew
+    ipconfig /flushdns
 }
 
 # sudo - must put command in quotes TODO: remove quotes from string
@@ -185,6 +191,24 @@ function Tree-File
 function Restart-WSL
 {
     Get-Service LxssManager | Restart-Service
+}
+
+function Expand-NuGet([string] $NuGet, [string] $FolderName = "")
+{
+    [System.Collections.ArrayList]$NuGetArray = $NuGet.Split(".")
+    $NuGetArray.Remove("nupkg")
+    $BaseArray = $NuGetArray.Clone()
+    $ZipArray = $BaseArray.Clone()
+    $ZipArray.Add("zip")
+    $Zip = $ZipArray -join "."
+    Copy-Item $NuGet $Zip
+
+    if ($FolderName -eq "")
+    {
+        $FolderName = $BaseArray -join "."
+    }
+    
+    Expand-Archive $Zip $FolderName
 }
 
 # Unix Replacements
