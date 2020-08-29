@@ -166,5 +166,7 @@ nnoremap <leader>html :-1read $HOME/.vim/snippets/empty.html<CR>4jwf>a
 " "'letter'y Copies stuff into register 'letter'
 " 'letter' + is system clipboard
 vnoremap <C-x> "+d
+nnoremap <C-x> ^v$"+d
 vnoremap <C-c> "+y
+nnoremap <C-c> ^v$"+y
 noremap <C-v> "+p
