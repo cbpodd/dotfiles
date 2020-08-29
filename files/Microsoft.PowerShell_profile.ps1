@@ -3,12 +3,32 @@
 # Install-Package -Name PSReadline
 # PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force
 
+# Modules
 Import-Module posh-git
 Set-PSReadlineOption -EditMode vi
 Set-PSReadlineOption -ViModeIndicator Prompt
 
+# Add secrets to path not to be checked into source control
+. $HOME\.MicrosoftSpecific.PSProfile.ps1
+. $HOME\.Secret.PSProfile.ps1
+
+# Microsoft-Specific (To be hidden in another file)
+$vms = @("IRVM01", "IRVM02", "IRVM03")
+$azs = "$HOME\one\AzureStack\Infrastructure\Orchestration"
+$gb = 'users/t-capodd'
+
+# Path variables
+$repos = "$HOME\repos"
+$go = "$HOME\go"
+$ONEDRIVE = "$HOME\OneDrive"
+$od = $ONEDRIVE
+$shared = "$ONEDRIVE\shared"
+$money = "$shared\camalina\money"
+$mymoney = "$money\cam"
+
 # Left Prompt (git, path, powershell)
-function Prompt {
+function Prompt
+{
     # First Line
     Write-Host 'PS ' -NoNewline -ForegroundColor White # Prompt Type
     Write-Host "$ENV:UserName @ " -NoNewline -ForegroundColor Blue # Current User
@@ -27,97 +47,128 @@ function Prompt {
     return '> ' # Last arrow
 }
 
+# Fix internet connection issues
+function Fix-InternetIssues
+{
+    netsh winsock reset
+    netsh int ip reset
+    ipconfig /release
+    ipconfig /renew
+    ipconfig /flushdns
+}
+
 # sudo - must put command in quotes TODO: remove quotes from string
-Function sudo([string] $command) {
+function sudo([string] $command) 
+{
     Start-Process -Verb RunAs powershell.exe -Args "-executionpolicy bypass -command Set-Location \`"$PWD\`"; $command"
 }
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
+if (Test-Path($ChocolateyProfile))
+{
   Import-Module "$ChocolateyProfile"
 }
 
 # Aliases
 
 # Functions to be aliased
-Function List-All {
+function List-All
+{
     ls -Force
 }
 
-Function Copy-Recurse([string] $Path, [string]$Destination) {
+function Copy-Recurse([string] $Path, [string]$Destination)
+{
     Copy-Item -Path $Path -Destination $Destination -Recurse
 }
 
-Function Remove-Directory-Force([string]$Path) {
+function Remove-Directory-Force([string]$Path)
+{
     Remove-Item -Path $Path -Recurse -Force
 }
 
-Function Git-Add-Dot {
+function Git-Add-Dot
+{
     git add .
 }
 
-Function Git-Commit-Message([string] $message) {
+function Git-Commit-Message([string] $message)
+{
     git commit -m $message
 }
 
-Function Git-Status {
+function Git-Status
+{
     git status
 }
 
-Function Git-Push {
+function Git-Push 
+{
     git push
 }
 
-Function Git-Branch {
+function Git-Branch
+{
     git branch
 }
 
-Function Git-Checkout {
+function Git-Checkout
+{
     git checkout
 }
 
-Function Git-Pull {
+function Git-Pull
+{
     git pull
 }
 
-Function Git-Graph {
+function Git-Graph
+{
     git log --oneline --graph --decorate --all
 }
 
-Function Git-Default-Commit {
+function Git-Default-Commit
+{
     git add .
     git commit -m "Default Commit Message"
     git push
 }
 
-Function Git-Add-Commit-Push([string] $message) {
+function Git-Add-Commit-Push([string] $message)
+{
     git add .
     git commit -m $message
     git push
 }
 
-Function Python-Server {
+function Python-Server
+{
     python -m http.server 4444
 }
 
-Function Create-File([string] $path) {
+function Create-File([string] $path)
+{
     New-Item -Path $path -ItemType File
 }
 
-Function Vim-VimRC {
+function Vim-VimRC
+{
     vim ~/.vimrc
 }
 
-Function Open-Powershell-Profile {
+function Open-Powershell-Profile
+{
     vim ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
 }
 
-Function Get-Web-Content([string] $url) {
+function Get-Web-Content([string] $url)
+{
     Invoke-WebRequest $url -useBasicParsing | Select-Object -Expand Content
 }
 
-Function Change-Dir-Back([int] $Number = 1) {
+function Change-Dir-Back([int] $Number = 1)
+{
     $base = "../"
     $Path = ""
     for ($i = 0; $i -lt $Number; $i++) {
@@ -127,14 +178,38 @@ Function Change-Dir-Back([int] $Number = 1) {
     Set-Location -Path $Path
 }
 
-Function Run-AutoHotKey {
+function Run-AutoHotKey
+{
     ~\repos\dotfiles\files\default.ahk
 }
 
-Function Tree-File {
+function Tree-File
+{
     tree /f
 }
 
+function Restart-WSL
+{
+    Get-Service LxssManager | Restart-Service
+}
+
+function Expand-NuGet([string] $NuGet, [string] $FolderName = "")
+{
+    [System.Collections.ArrayList]$NuGetArray = $NuGet.Split(".")
+    $NuGetArray.Remove("nupkg")
+    $BaseArray = $NuGetArray.Clone()
+    $ZipArray = $BaseArray.Clone()
+    $ZipArray.Add("zip")
+    $Zip = $ZipArray -join "."
+    Copy-Item $NuGet $Zip
+
+    if ($FolderName -eq "")
+    {
+        $FolderName = $BaseArray -join "."
+    }
+    
+    Expand-Archive $Zip $FolderName
+}
 
 # Unix Replacements
 New-Alias -Name web -Value Get-Web-Content
