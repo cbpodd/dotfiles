@@ -1,10 +1,10 @@
 # Java Default set to 1.8
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
-# source /Users/cbpodd/Library/Preferences/org.dystroy.broot/launcher/bash/br
+# source $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
 # Path
-export PATH=":/Users/cbpodd/sbin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 fpath+=~/.config
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#B3B3B3'

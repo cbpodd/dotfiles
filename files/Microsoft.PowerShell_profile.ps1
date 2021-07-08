@@ -117,9 +117,31 @@ Function Open-Powershell-Profile {
     vim ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
 }
 
+Function Run-AutoHotkey {
+    ~/repos/dotfiles/files/default.ahk
+}
+
 Function Get-Web-Content([string] $url) {
     Invoke-WebRequest $url -useBasicParsing | Select-Object -Expand Content
 }
+
+Function Docker-Compose-Down() {
+    docker-compose down
+}
+
+function Docker-Compose-Up() {
+    docker-compose up -d --build
+}
+
+function Docker-Compose() {
+    Docker-Compose-Down
+    Docker-Compose-Up
+}
+
+# docker-compose
+New-Alias -Name dcd -Value Docker-Compose-Down
+New-Alias -Name dcu -Value Docker-Compose-Up
+New-Alias -Name dc -Value Docker-Compose
 
 # Overwrites of Existing Commands for better defaults
 # New-Alias -Name make -Value Make-Jobs
@@ -165,3 +187,4 @@ New-Alias -Name p3 -Value python
 # Others
 New-Alias -Name open -Value Start-Process
 New-Alias -Name wg -Value winget
+New-Alias -Name ahk -Value Run-AutoHotkey

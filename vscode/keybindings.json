@@ -94,5 +94,13 @@
     {
         "key": "cmd+k cmd+up",
         "command": "-workbench.action.focusAboveGroup"
+    },
+    {
+        "key": "alt+m",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "-editor.action.toggleTabFocusMode"
     }
 ]

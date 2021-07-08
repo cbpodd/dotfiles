@@ -1,30 +1,46 @@
 {
-    "editor.lineNumbers": "relative",
-    "editor.rulers": [
-        0,
-        80
-    ],
-    "vim.leader": ",",
-    "vim.normalModeKeyBindingsNonRecursive": [
+  "editor.lineNumbers": "relative",
+  "editor.rulers": [0, 80],
+  "vim.leader": ",",
+  "vim.normalModeKeyBindingsNonRecursive": [
     {
-        "before": ["]", "<space>"],
-        "after": ["o", "<esc>", "k"]
+      "before": ["]", "<space>"],
+      "after": ["o", "<esc>", "k"]
     },
     {
-        "before": ["[", "<space>"],
-        "after": ["O", "<esc>", "j"]
+      "before": ["[", "<space>"],
+      "after": ["O", "<esc>", "j"]
     },
     {
-        "before": ["J"],
-        "commands": [":tabp"]
+      "before": ["J"],
+      "commands": [":tabp"]
     },
     {
-        "before": ["K"],
-        "commands": [":tabn"]
+      "before": ["K"],
+      "commands": [":tabn"]
     }
-    ],
-    "explorer.confirmDelete": false,
-    "workbench.startupEditor": "newUntitledFile",
-    "terminal.external.osxExec": "Alacritty.app",
-    "extensions.ignoreRecommendations": false
+  ],
+  "explorer.confirmDelete": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "terminal.external.osxExec": "iterm.app",
+  "extensions.ignoreRecommendations": false,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "editor.suggestSelection": "first",
+  "python.languageServer": "Pylance",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "explorer.confirmDragAndDrop": false,
+  "eslint.format.enable": true
 }

@@ -12,7 +12,6 @@
             "hidden": false,
             "colorScheme": "default",
             "fontSize": 10,
-            "fontFace": "DEC Terminal",
             "cursorShape": "filledBox"
         },
         {
@@ -28,7 +27,6 @@
             "source": "Windows.Terminal.Wsl",
             "colorScheme": "default",
             "fontSize": 10,
-            "fontFace": "DEC Terminal",
             "cursorShape": "filledBox"
         },
         {
