@@ -45,5 +45,14 @@
   "eslint.format.enable": true,
   "go.formatTool": "goimports",
   "codespaces.accountProvider": "Microsoft",
-  "team.showWelcomeMessage": false
+  "team.showWelcomeMessage": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "python.showStartPage": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "editor.minimap.enabled": false
 }
