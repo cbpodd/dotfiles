@@ -71,7 +71,7 @@ def windows(files, folders, config, sbin):
         elif f == "wtprofile.json":
             actualPath = os.path.join(HOME, "AppData", "Local", "Packages", \
                     "Microsoft.WindowsTerminal_8wekyb3d8bbwe", "LocalState", \
-                    "profiles.json")
+                    "settings.json")
         if actualPath and os.path.isfile(fullPath) and not os.path.isfile(actualPath):
                 os.symlink(fullPath, actualPath)
         if os.path.isfile(fullPath) and not os.path.isfile(homePath):

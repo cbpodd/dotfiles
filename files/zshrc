@@ -1,16 +1,23 @@
-# Java Default set to 1.8
-# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+# Variables
+export PATH=":/Users/cbpodd/sbin:/usr/local/bin:/usr/local/sbin:/Users/cbpodd/.yarn/bin:/Users/cbpodd/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-# source $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br
+# Path variables
+export repos="$HOME/repos"
+export ONEDRIVE="$HOME/OneDrive"
+export School="$ONEDRIVE/School"
+export shared="$ONEDRIVE/shared"
+export money="$shared/money"
+export mymoney="$money/cam"
 
-# Path
-export PATH="$HOME/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-fpath+=~/.config
+# Include secrets (not included in source control)
+source $HOME/.secret.sh
 
+# Zsh Config
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#B3B3B3'
 source ~/.config/antigen.zsh
 antigen init ~/.config/antigen/antigenrc
 export EDITOR=vim
+fpath+=~/.config
 
 # Custom Commands
 RIGHT_MON_ID='E0CF5B67-FDDF-13D4-8C8D-64D7900F18A8'
@@ -37,6 +44,21 @@ function singleDisplay() {
     displayplacer "id:$INTERNAL_SCREEN_ID $SINGLE_MODE $NO_ROTATE origin:(0,0)"
 }
 
+function cdb() {
+    initialString='../'
+    finalString=$initialString
+    iterations=1
+    if test $# -eq 1; then
+        iterations=$1
+    fi
+
+    for _ in {1..$iterations}; do
+        finalString="$initialString$finalString"
+    done
+
+    cd $finalString
+}
+
 # Git Scripts
 function gacp() {
     git add .
@@ -50,7 +72,7 @@ function gacp() {
 alias mv="mv -i"             # -i prompts before overwrite
 alias mkdir="mkdir -p"       # -p makes parents dirs as needed
 alias cp="cp -r"             # -r copies directories recursively
-alias make="make -j$(nproc)" # -j$(nproc) uses nproc concurrent jobs   
+alias make="make -j$(nproc)" # -j$(nproc) uses nproc concurrent jobs
 alias cat="cat -n"           # -n displays line numbers
 
 # Common Flags
@@ -72,8 +94,8 @@ alias gdcm='git add . && git commit -S -m "Default Commit Message" && git push'
 
 # VirtualBox Command Line
 alias vbox="VBoxManage"
-alias vbsa='vbox startvm "Ubuntu Server" --type headless'
-alias vbso='vbox controlvm "Ubuntu Server" poweroff --type headless'
+alias vbst='vbox startvm "Ubuntu Server" --type headless'
+alias vbsp='vbox controlvm "Ubuntu Server" poweroff --type headless'
 alias vboxc='vbsa && ssh vbox && vbso'
 
 # Shpotify - Spotify Command Line
@@ -98,3 +120,6 @@ alias sd="singleDisplay"
 # Others
 alias rq='sed -E "s/\"//g"'
 alias preview='open -a "Preview.app"'
+
+# Noglobs
+alias mergepdfs='noglob mergepdfs'

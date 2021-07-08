@@ -42,5 +42,8 @@
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
   "explorer.confirmDragAndDrop": false,
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "go.formatTool": "goimports",
+  "codespaces.accountProvider": "Microsoft",
+  "team.showWelcomeMessage": false
 }
