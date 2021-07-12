@@ -15,7 +15,7 @@ CONFIG_DIR = 'config'
 VSCODE_DIR = 'vscode'
 HOME = str(Path.home())
 CWD = os.getcwd()
-CODEWINDOWS = os.path.join(HOME, "AppData", "Roaming", "Code", "User")
+CODEWINDOWS = os.path.join(HOME, "AppData", "Roaming", "Code - Insiders", "User")
 CODEMACOS = os.path.join(HOME, "Library", "Application Support", "Code", "User")
 
 def main():
@@ -70,7 +70,7 @@ def windows(files, folders, config, sbin):
             actualPath = os.path.join(HOME, 'Documents', 'WindowsPowerShell', f)
         elif f == "wtprofile.json":
             actualPath = os.path.join(HOME, "AppData", "Local", "Packages", \
-                    "Microsoft.WindowsTerminal_8wekyb3d8bbwe", "LocalState", \
+                    "Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe", "LocalState", \
                     "settings.json")
         if actualPath and os.path.isfile(fullPath) and not os.path.isfile(actualPath):
                 os.symlink(fullPath, actualPath)
@@ -117,7 +117,7 @@ def linkFolders(folders):
         homePath = os.path.join(HOME, hf)
         if os.path.isdir(fullPath) and not os.path.isdir(homePath):
             os.symlink(fullPath, homePath)
- 
+
 
 def hidden(f, fs_type):
     if fs_type == UNIX:
