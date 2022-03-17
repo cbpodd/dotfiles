@@ -4,7 +4,6 @@
 # PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force
 
 # Modules
-Import-Module posh-git
 Set-PSReadlineOption -EditMode vi
 Set-PSReadlineOption -ViModeIndicator Prompt
 
@@ -12,38 +11,39 @@ Set-PSReadlineOption -ViModeIndicator Prompt
 . $HOME\.MicrosoftSpecific.PSProfile.ps1
 . $HOME\.Secret.PSProfile.ps1
 
-# Microsoft-Specific (To be hidden in another file)
-$vms = @("IRVM01", "IRVM02", "IRVM03")
-$azs = "$HOME\one\AzureStack\Infrastructure\Orchestration"
-$gb = 'users/t-capodd'
-
 # Path variables
 $repos = "$HOME\repos"
-$go = "$HOME\go"
-$ONEDRIVE = "$HOME\OneDrive"
-$od = $ONEDRIVE
-$shared = "$ONEDRIVE\shared"
-$money = "$shared\camalina\money"
-$mymoney = "$money\cam"
+$tmp = "$HOME\Documents\tmp"
 
 # Left Prompt (git, path, powershell)
 function Prompt
 {
+    if(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator") -eq $True)
+    {
+        Write-Host "***ADMIN*** " -ForegroundColor Red -NoNewline
+    }
+    else
+    {
+        Write-Host "PS " -NoNewLine
+    }
+
     # First Line
-    Write-Host 'PS ' -NoNewline -ForegroundColor White # Prompt Type
-    Write-Host "$ENV:UserName @ " -NoNewline -ForegroundColor Blue # Current User
+    Write-Host "$ENV:UserName@" -NoNewline -ForegroundColor Blue # Current User
     Write-Host "$(Get-Location) " -NoNewline -ForegroundColor Green # Present Working Directory
+
     # Write-Host "$(Get-Date)" -NoNewline -ForegroundColor Yellow # Current date/time
+
     if ($LastExitCode -ge 1)  { # Exit code of the last command, if not 0
             Write-Host " $LastExitCode" -NoNewLine -ForegroundColor Red
-    }     #) +
-    Write-VcsStatus
-    Write-Host " " -NoNewLine # Space
+    }
+
+    Write-Host " " # New Line
 
     # Second Line
     $(if ($NestedPromptLevel -ge 1) {
         Write-Host '>' -NoNewLine -ForegroundColor White
     })
+
     return '> ' # Last arrow
 }
 
@@ -282,4 +282,3 @@ New-Alias -Name p3 -Value python
 
 # Others
 New-Alias -Name open -Value Start-Process
-New-Alias -Name wg -Value winget
