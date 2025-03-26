@@ -239,6 +239,16 @@ function Expand-NuGet([string] $NuGet, [string] $FolderName = "")
     Expand-Archive $Zip $FolderName
 }
 
+function Start-Neovim
+{
+    & 'C:\Program Files\Neovim\bin\nvim.exe' $args
+}
+
+function Start-NeovimQt
+{
+    & 'C:\Program Files\Neovim\bin\nvim-qt.exe' $args
+}
+
 # Unix Replacements
 New-Alias -Name web -Value Get-Web-Content
 New-Alias -Name uniq -Value Get-Unique
@@ -267,7 +277,11 @@ New-Alias -Name ggraph -Value Git-Graph
 New-Alias -Name gdcm -Value Git-Default-Commit
 
 # Common Vim Commands
-New-Alias -Name :e -Value vim
+New-Alias -Name :e -Value Start-Neovim
+New-Alias -Name vnv -Value Start-NeovimQt
+New-Alias -Name nvqt -Value Start-NeovimQt
+New-Alias -Name vnvim -Value Start-NeovimQt
+New-Alias -Name nvimqt -Value Start-NeovimQt
 
 # Open Profile Files
 New-Alias -Name vimrc -Value Vim-VimRC
