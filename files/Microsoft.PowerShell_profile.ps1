@@ -152,20 +152,6 @@ function Create-File([string] $path)
     New-Item -Path $path -ItemType File
 }
 
-function Vim-VimRC
-{
-    vim ~/.vimrc
-}
-
-function Open-Powershell-Profile
-{
-    vim ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-}
-
-Function Run-AutoHotkey {
-    ~/repos/dotfiles/files/default.ahk
-}
-
 Function Get-Web-Content([string] $url) {
     Invoke-WebRequest $url -useBasicParsing | Select-Object -Expand Content
 }
@@ -204,11 +190,6 @@ function Change-Dir-Back([int] $Number = 1)
     }
 
     Set-Location -Path $Path
-}
-
-function Run-AutoHotKey
-{
-    ~\repos\dotfiles\files\default.ahk
 }
 
 function Tree-File
@@ -282,12 +263,6 @@ New-Alias -Name vnv -Value Start-NeovimQt
 New-Alias -Name nvqt -Value Start-NeovimQt
 New-Alias -Name vnvim -Value Start-NeovimQt
 New-Alias -Name nvimqt -Value Start-NeovimQt
-
-# Open Profile Files
-New-Alias -Name vimrc -Value Vim-VimRC
-New-Alias -Name psprof -Value Open-Powershell-Profile
-New-Alias -Name psprofile -Value Open-Powershell-Profile
-New-Alias -Name ahk -Value Run-AutoHotKey
 
 # Python
 New-Alias -Name pserver -Value Python-Server
