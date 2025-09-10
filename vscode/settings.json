@@ -1,58 +1,119 @@
 {
-  "editor.lineNumbers": "relative",
-  "editor.rulers": [0, 80],
-  "vim.leader": ",",
-  "vim.normalModeKeyBindingsNonRecursive": [
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [
+        0,
+        80,
+        120
+    ],
+    "vim.leader": ",",
+    "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["]", "<space>"],
-      "after": ["o", "<esc>", "k"]
+        "before": ["]", "<space>"],
+        "after": ["o", "<esc>", "k"]
     },
     {
-      "before": ["[", "<space>"],
-      "after": ["O", "<esc>", "j"]
+        "before": ["[", "<space>"],
+        "after": ["O", "<esc>", "j"]
     },
     {
-      "before": ["J"],
-      "commands": [":tabp"]
+        "before": ["J"],
+        "commands": [":tabp"]
     },
     {
-      "before": ["K"],
-      "commands": [":tabn"]
+        "before": ["K"],
+        "commands": [":tabn"]
     }
-  ],
-  "explorer.confirmDelete": false,
-  "workbench.startupEditor": "newUntitledFile",
-  "terminal.external.osxExec": "iterm.app",
-  "extensions.ignoreRecommendations": false,
-  "files.trimTrailingWhitespace": true,
-  "files.trimFinalNewlines": true,
-  "editor.suggestSelection": "first",
-  "python.languageServer": "Pylance",
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "git.enableSmartCommit": true,
-  "git.confirmSync": false,
-  "explorer.confirmDragAndDrop": false,
-  "eslint.format.enable": true,
-  "go.formatTool": "goimports",
-  "codespaces.accountProvider": "Microsoft",
-  "team.showWelcomeMessage": false,
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
-  },
-  "python.showStartPage": false,
-  "notebook.cellToolbarLocation": {
-    "default": "right",
-    "jupyter-notebook": "left"
-  },
-  "editor.minimap.enabled": false
+    ],
+    "explorer.confirmDelete": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "terminal.external.osxExec": "iterm.app",
+    "extensions.ignoreRecommendations": false,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "go.formatTool": "goimports",
+    "codespaces.accountProvider": "Microsoft",
+    "editor.suggestSelection": "first",
+    "python.languageServer": "Pylance",
+    "omnisharp.enableRoslynAnalyzers": true,
+    "java.project.importOnFirstTimeStartup": "automatic",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "java.semanticHighlighting.enabled": true,
+    "editor.minimap.enabled": false,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "explorer.confirmDragAndDrop": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.showSuggestionsAsSnippets": true,
+    "files.associations": {
+        "*html": "html",
+        "*njk": "html"
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "python.insidersChannel": "weekly",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "workbench.colorTheme": "Visual Studio 2019 Dark",
+    "kite.showWelcomeNotificationOnStartup": false,
+    "java.refactor.renameFromFileExplorer": "autoApply",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "devprod.vulnerability-extension.backgroundScanningInterval": "Daily",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "remote.SSH.localServerDownload": "auto",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.cargo.features": "all",
+    "rust-analyzer.check.features": "all",
+    "[rust]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "nmake.selfhost-ring": "Canary",
+    "rust-analyzer.diagnostics.disabled": [
+        "unresolved-proc-macro"
+    ],
+    "git.replaceTagsWhenPull": true,
+    "rust-analyzer.linkedProjects": [],
+    "remote.portsAttributes": {
+        "443": {
+            "protocol": "https"
+        },
+        "8443": {
+            "protocol": "https"
+        }
+    },
+    "extensions.trustedPublishers": [
+        "alexandersklarmsft",
+        "esbenp",
+        "fill-labs",
+        "gruntfuggly",
+        "hars",
+        "jeff-hykin",
+        "ms-sarifvscode",
+        "rust-lang",
+        "tamasfe",
+        "usernamehw",
+        "vadimcn",
+        "vscodevim"
+    ],
+    "rust-analyzer.runnables.command": null
 }

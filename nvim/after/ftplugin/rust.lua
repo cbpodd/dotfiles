@@ -16,3 +16,7 @@ vim.keymap.set(
   end,
   { silent = true, buffer = bufnr }
 )
+vim.keymap.set("n", "<leader>gd", function () vim.lsp.buf.definition() end, { buffer = bufnr, desc = "goto definition" })
+
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+

@@ -110,7 +110,7 @@ local git_blame = { 'f-person/git-blame.nvim' }
 local floaterm = { 'voldikss/vim-floaterm' }
 
 -- [[ Movement ]]
-local spider = { "chrisgrieser/nvim-spider", lazy = true }
+-- local spider = { "chrisgrieser/nvim-spider", lazy = true } didn't love this one
 local move = { "hinell/move.nvim" }
 local bad_practices = { 'antonk52/bad-practices.nvim' }
 
@@ -122,11 +122,49 @@ local lspconfig = { 'neovim/nvim-lspconfig' }
 -- [[ Copilot ]]
 local github_copilot = { 'github/copilot.vim' }
 
+local ufo = {
+    "kevinhwang91/nvim-ufo",
+    event = "BufRead",
+    dependencies = { "kevinhwang91/promise-async" },
+    config = function()
+        vim.o.foldcolumn = "1"
+        vim.o.foldlevel = 99
+        vim.o.foldlevelstart = 99
+        vim.o.foldenable = true
+        require("ufo").setup({})
+    end,
+}
+
 -- [[ Rust ]]
+-- [[ rustaceanvim]]
+-- vim.g.rustaceanvim = {
+  -- LSP configuration
+  -- server = {
+    -- default_settings = {
+      -- rust-analyzer language server configuration
+      -- ['rust-analyzer'] = {
+          -- cargo = {
+              -- allFeatures = true,
+              -- check = {
+                  -- command = "cranky",
+              -- },
+          -- }
+      -- },
+    -- },
+  -- },
+-- }
+
 local rustaceanvim = {
   'mrcjkb/rustaceanvim',
   version = '^5', -- Recommended
   lazy = false, -- This plugin is already lazy
+}
+local crates = {
+    'saecki/crates.nvim',
+    event = { "BufRead Cargo.toml" },
+    config = function()
+        require('crates').setup()
+    end,
 }
 
 -- [[ Testing ]]
@@ -141,6 +179,15 @@ local neotest = {
 }
 -- [[ Debugging ]]
 local dap = { 'mfussenegger/nvim-dap' }
+
+local cmp = { "hrsh7th/nvim-cmp" }
+local cmp_lsp = { "hrsh7th/cmp-nvim-lsp" }
+local cmp_nvim_lua = { "hrsh7th/cmp-nvim-lua" }
+local cmp_lsp_signature_help = { "hrsh7th/cmp-nvim-lsp-signature-help" }
+local cmp_vsnip = { "hrsh7th/cmp-vsnip" }
+local cmp_path = { "hrsh7th/cmp-path" }
+local cmp_buffer = { "hrsh7th/cmp-buffer" }
+local vim_vsnip = { "hrsh7th/vim-vsnip" }
 
 -- [[ Plugins ]]
 local plugins = {
@@ -165,7 +212,7 @@ local plugins = {
     cursorline,
     mkdir,
     git_blame,
-    spider,
+    -- spider,
     telescope_tabs,
     wilder,
     notify,
@@ -178,8 +225,18 @@ local plugins = {
     lspconfig,
     github_copilot,
     rustaceanvim,
+    crates,
     neotest,
     dap,
+    cmp,
+    cmp_lsp,
+    cmp_nvim_lua,
+    cmp_lsp_signature_help,
+    cmp_vsnip,
+    cmp_path,
+    cmp_buffer,
+    vim_vsnip,
+    ufo,
 }
 
 require("lazy").setup(plugins)
